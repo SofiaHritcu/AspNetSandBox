@@ -1,0 +1,157 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+    <title>Google</title>
+    <link rel="stylesheet" href="css/site.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+    <script src="https://kit.fontawesome.com/4c536a6bd5.js"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">        <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
+    <script>
+            $(document).ready(function(){
+                $('[data-toggle="tooltip"]').tooltip();
+            });
+    </script>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="nav">
+                <a class="nav-link"
+                   href="https://accounts.google.com/b/0/AddMailService">
+                    Gmail
+                </a>
+                <a class="nav-link"
+                   href="https://accounts.google.com/b/0/AddMailService">
+                    Imagini
+                </a>
+                <button class="apps-button">
+                    <img src="images/dots-menu.png" class="apps-button-image">
+                </button>
+                <a class="nav-link-round"
+                   target="_blank">
+                    <img class="user-avatar" src="images/avatar-3.png" alt="" />
+                </a>
+            </nav>
+        </div>
+        <main class="main">
+            <img src="images/logo.png" class="logo-image">
+            <div class="row search">
+                <span class="material-icons icon-search">search</span>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <input class="input-search" type="text" />
+                </div>
+                <span class="material-icons-sharp icon-keyboard"
+                      data-toggle="tooltip"
+                      data-placement="bottom"
+                      title="Instrumente pentru introducere de text">
+                    keyboard_alt
+                </span>
+                <button class="microphone-button" data-toggle="tooltip" data-placement="bottom" title="Efectuati o cautare vocală">
+                    <img class="icon-microphone"
+                         src="images/microphone.png"
+                         alt="" />
+                </button>
+            </div>
+            <div class="row action-buttons">
+                <a href="#"
+                   class="action-link">
+                    <button type="button" class="btn action-button">
+                        Căutare Google
+                    </button>
+                </a>
+                <a href="https://www.google.com/doodles" class="action-link"><button type="button" class="btn action-button">Mă simt norocos</button></a>
+            </div>
+            <div class="row languages">
+                <p>
+                    Google oferit în:
+                    <a href="https://www.google.com/"
+                       hreflang="/hu/">
+                        Magyar
+                    </a>
+                    <a href="https://www.google.com/"
+                       hreflang="/de/">
+                        Deutsch
+                    </a>
+                </p>
+
+            </div>
+
+        </main>
+        <footer class="footer-links">
+            <div class="row">
+                <footer class="footer-country">
+                    <div class="left-section">
+                        <a class="footer-link-padding"
+                           aria-disabled="true">
+                            România
+                        </a>
+                    </div>
+                </footer>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-lg-2 col-md-3  col-sm-3 col-xs-4 about">
+                            <a class="footer-link-padding"
+                               href="https://about.google/?utm_source=google-RO&utm_medium=referral&utm_campaign=hp-footer&fg=1">
+                                Despre
+                            </a>
+                        </div>
+                        <div class="col-lg-2 col-md-3  col-sm-3 col-xs-4 mr-5 publicity no-padding-left-right">
+                            <a class="footer-link"
+                               href="https://ads.google.com/intl/ro_ro/home/?subid=ww-ww-et-g-awa-a-g_hpafoot1_1!o2&utm_source=google.com&utm_medium=referral&utm_campaign=google_hpafooter&fg=1">
+                                Publicitate
+                            </a>
+                        </div>
+                        <div class="col-lg-2 col-md-3  col-sm-3 col-xs-4 no-padding-left-right">
+                            <a class="footer-link"
+                               href="https://www.google.com/services/?subid=ww-ww-et-g-awa-a-g_hpbfoot1_1!o2&utm_source=google.com&utm_medium=referral&utm_campaign=google_hpbfooter&fg=1#?modal_active=none">
+                                Companii
+                            </a>
+                        </div>
+                        <div class="col-lg-6 col-md-3 col-sm-3 col-xs-12 no-padding-left-right how-works">
+                            <a class="footer-link"
+                               href="https://www.google.com/search/howsearchworks/?fg=1">
+                                Cum funcționează Căutarea
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-lg-9 col-md-4  col-sm-4 col-xs-4 confidentiality">
+                            <a class="footer-link"
+                               href="https://policies.google.com/privacy?hl=ro&fg=1">
+                                Confidențialitate
+                            </a>
+                        </div>
+                        <div class="col-lg-1 col-md-4  col-sm-4 col-xs-4  no-padding text-center">
+                            <a class="footer-link"
+                               href="https://policies.google.com/terms?hl=ro&fg=1">
+                                Termeni
+                            </a>
+                        </div>
+                        <div class="col-lg-2 col-md-4  col-sm-4 col-xs-4 settings text-center no-padding">
+                            <a class="footer-link "
+                               href="#">
+                                Setări
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
