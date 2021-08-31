@@ -40,6 +40,7 @@ namespace AspNetSandBox
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+
             }
             else
             {
@@ -58,7 +59,7 @@ namespace AspNetSandBox
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapRazorPages();
+                endpoints.MapControllers();
             });
         }
     }
