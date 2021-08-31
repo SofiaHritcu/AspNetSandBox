@@ -13,7 +13,7 @@ namespace AspNetSandBox
 
         public String CurrentIconCode { get; set; }
 
-
+        public ICollection<DailyWeatherForecastOpen> DailyForecasts { get; set; }
 
     }
 }
