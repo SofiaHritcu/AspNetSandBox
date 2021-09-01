@@ -14,11 +14,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">        <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link src="~/lib/jquery/dist/jquery.min.js">
     <script src="js/site.js"></script>
     <script>
-            // $(document).ready(function(){
-            //      $('[data-toggle="tooltip"]').tooltip();
-            // });
+                // $(document).ready(function(){
+                //      $('[data-toggle="tooltip"]').tooltip();
+                // });
     </script>
 </head>
 <body>
@@ -94,7 +95,7 @@
                         <div class="row">
                             <div class="col-sm-3">&nbsp;</div>
                             <div class="col-sm-2 p-0">
-                                <div class="thumbnail" style="background: #66ccff ">
+                                <div class="thumbnail" style="background: linear-gradient(#66c2ff, #ffffff);">
                                     <div class="caption text-center">
                                         <h2>today</h2>
                                         <div class="position-relative">
@@ -110,7 +111,7 @@
                                 </div>
                             </div>
                             <div class="col-sm-2  p-0">
-                                <div class="thumbnail" style="background: #66ccff">
+                                <div class="thumbnail" style="background: linear-gradient(#66c2ff, #ffffff);">
                                     <div class="caption text-center">
                                         <h3 id="timeFromNowHours" class="text-wrap"></h3>
                                         <div class="position-relative">
@@ -128,7 +129,7 @@
                                 </div>
                             </div>
                             <div class="col-sm-2  p-0">
-                                <div class="thumbnail" style="background: #66ccff">
+                                <div class="thumbnail" style="background: linear-gradient(#66c2ff, #ffffff);">
                                     <div class="caption text-center">
                                         <h3 id="timeFromNow1" class="text-wrap"></h3>
                                         <div class="position-relative">
@@ -149,7 +150,7 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-2  p-0">
-                                <div class="thumbnail" style="background: #cceeff">
+                                <div class="thumbnail" style="background: linear-gradient(#cceeff, #ffffff); ">
                                     <div class="caption text-center">
                                         <h3 id="timeFromNow2" class="text-wrap"></h3>
                                         <div class="position-relative">
@@ -167,7 +168,7 @@
                                 </div>
                             </div>
                             <div class="col-sm-2  p-0">
-                                <div class="thumbnail" style="background: #cceeff">
+                                <div class="thumbnail" style="background: linear-gradient(#cceeff, #ffffff); ">
                                     <div class="caption text-center">
                                         <h3 id="timeFromNow3" class="text-wrap"></h3>
                                         <div class="position-relative">
@@ -185,7 +186,7 @@
                                 </div>
                             </div>
                             <div class="col-sm-2  p-0">
-                                <div class="thumbnail" style="background: #cceeff">
+                                <div class="thumbnail" style="background: linear-gradient(#cceeff, #ffffff); ">
                                     <div class="caption text-center">
                                         <h3 id="timeFromNow4" class="text-wrap"></h3>
                                         <div class="position-relative">
@@ -203,7 +204,7 @@
                                 </div>
                             </div>
                             <div class="col-sm-2  p-0">
-                                <div class="thumbnail" style="background: #cceeff">
+                                <div class="thumbnail" style="background: linear-gradient(#cceeff, #ffffff); ">
                                     <div class="caption text-center">
                                         <h3 id="timeFromNow5" class="text-wrap"></h3>
                                         <div class="position-relative">
@@ -221,7 +222,7 @@
                                 </div>
                             </div>
                             <div class="col-sm-2  p-0">
-                                <div class="thumbnail" style="background: #cceeff">
+                                <div class="thumbnail" style="background: linear-gradient(#cceeff, #ffffff); ">
                                     <div class="caption text-center">
                                         <h3 id="timeFromNow6" class="text-wrap"></h3>
                                         <div class="position-relative">
@@ -239,7 +240,7 @@
                                 </div>
                             </div>
                             <div class="col-sm-2  p-0">
-                                <div class="thumbnail" style="background: #cceeff">
+                                <div class="thumbnail" style="background: linear-gradient(#cceeff, #ffffff); ">
                                     <div class="caption text-center">
                                         <h3 id="timeFromNow7" class="text-wrap"></h3>
                                         <div class="position-relative">
@@ -327,4 +328,15 @@
             </footer>
         </div>
 </body>
+<script>
+    var settings = {
+        "url": "https://localhost:5001/WeatherForecast",
+        "method": "GET",
+        "timeout": 0,
+    };
+
+    $.ajax(settings).done(function (response) {
+        console.log(response);
+    });
+</script>
 </html>
