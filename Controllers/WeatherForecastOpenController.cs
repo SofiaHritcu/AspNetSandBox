@@ -7,6 +7,7 @@ using System.Net;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using AspNetSandBox.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
@@ -73,8 +74,15 @@ namespace AspNetSandBox.Controllers
                     timeFromNow = "in " + difference + " hours";
                 } else
                 {
-                    difference = (dateDaily - DateTime.Now).Days;
-                    timeFromNow = "in " + difference + " days";
+                    if ( i == 1)
+                    {
+                        difference = (dateDaily - DateTime.Now).Days;
+                        timeFromNow = "in " + difference + " day";
+                    } else
+                    {
+                        difference = (dateDaily - DateTime.Now).Days;
+                        timeFromNow = "in " + difference + " days";
+                    }
                 }
 
                 double dailyTemperature = dailyForecasts[i].temp.day;
@@ -94,5 +102,7 @@ namespace AspNetSandBox.Controllers
             weatherForecast.DailyForecasts = dailyWeatherForecasts;
             return weatherForecast;
         }
+
+       
     }
 }
