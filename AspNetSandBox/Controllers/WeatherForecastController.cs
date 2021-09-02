@@ -55,16 +55,21 @@ namespace AspNetSandBox.Controllers
             var json = JObject.Parse(content);
             var rng = new Random();
 
-            int unixDate = json["daily"][0].Value<int>("dt");
-            DateTime dtDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
+            JToken dailyWeather = json["daily"][0];
+            int unixDate = dailyWeather.Value<int>("dt");
+
+            var dtDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
             DateTime date = dtDateTime.AddSeconds(unixDate);
 
             Console.WriteLine(date);
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+            return Enumerable.Range(1, 5).Select(index =>
             {
-                Date = date,
-                TemperatureC = (int)(json["daily"][0]["temp"].Value<double>("day") - 273.15),
-                Summary = json["daily"][0]["weather"][0].Value<string>("main")
+                return new WeatherForecast
+                {
+                    Date = date,
+                    TemperatureC = (int)(dailyWeather["temp"].Value<double>("day") - 273.15),
+                    Summary = dailyWeather["weather"][0].Value<string>("main")
+                };
             })
             .ToArray();
         }
