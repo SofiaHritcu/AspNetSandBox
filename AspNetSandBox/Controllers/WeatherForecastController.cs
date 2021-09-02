@@ -13,6 +13,7 @@ namespace AspNetSandBox.Controllers
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
     {
+        private const float KELVIN_CONST = 273.15f;
         private static readonly string[] Summaries = new[]
         {
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
@@ -37,24 +38,30 @@ namespace AspNetSandBox.Controllers
 
         }
 
-        public IEnumerable<WeatherForecast> ConvertResponseToWeatherForecast(string content)
+        public IEnumerable<WeatherForecast> ConvertResponseToWeatherForecast(string content, int days = 5)
         {
             var json = JObject.Parse(content);
             var rng = new Random();
             
-            return Enumerable.Range(1, 5).Select(index =>
+            return Enumerable.Range(1, days).Select(index =>
             {
-                JToken jsonDailyWeather = json["daily"][index];
+                var jsonDailyWeather = json["daily"][index];
                 long unixDateTime = jsonDailyWeather.Value<long>("dt");
-                
+                var weatherSummary = jsonDailyWeather["weather"][0].Value<string>("main");
+
                 return new WeatherForecast
                 {
                     Date = DateTimeOffset.FromUnixTimeSeconds(unixDateTime).Date,
-                    TemperatureC = (int)Math.Round(jsonDailyWeather["temp"].Value<double>("day") - 273.15),
-                    Summary = jsonDailyWeather["weather"][0].Value<string>("main")
+                    TemperatureC = ExtractCelsiusTemperatureFromDailyWeather(jsonDailyWeather),
+                    Summary = weatherSummary
                 };
             })
             .ToArray();
+        }
+
+        private static int ExtractCelsiusTemperatureFromDailyWeather(JToken jsonDailyWeather)
+        {
+            return (int)Math.Round(jsonDailyWeather["temp"].Value<double>("day") - KELVIN_CONST);
         }
     }
 }
