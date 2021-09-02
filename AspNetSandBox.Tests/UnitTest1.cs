@@ -20,6 +20,7 @@ namespace AspNetSandBox.Tests
 
             // Assert
             Assert.Equal("Rain", ((WeatherForecast[])weatherForecasts)[0].Summary);
+            Assert.Equal(13, ((WeatherForecast[])weatherForecasts)[0].TemperatureC);
         }
     }
 }

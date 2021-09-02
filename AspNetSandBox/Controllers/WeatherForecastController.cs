@@ -27,7 +27,7 @@ namespace AspNetSandBox.Controllers
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {
-            var client = new RestClient("https://api.openweathermap.org/data/2.5/onecall?lat=45.657974&lon=25.601198&exclude=hourly,minutely&units=metric&appid=56bb96d9fedf1b3044e60b0760f4278d");
+            var client = new RestClient("https://api.openweathermap.org/data/2.5/onecall?lat=45.657974&lon=25.601198&exclude=hourly,minutely&appid=56bb96d9fedf1b3044e60b0760f4278d");
             client.Timeout = -1;
             var request = new RestRequest(Method.GET);
             IRestResponse response = client.Execute(request);
@@ -54,10 +54,16 @@ namespace AspNetSandBox.Controllers
         {
             var json = JObject.Parse(content);
             var rng = new Random();
+
+            int unixDate = json["daily"][0].Value<int>("dt");
+            DateTime dtDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
+            DateTime date = dtDateTime.AddSeconds(unixDate);
+
+            Console.WriteLine(date);
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
-                Date = DateTime.Now.AddDays(index),
-                TemperatureC = (int)json["daily"][0]["temp"].Value<double>("day"),
+                Date = date,
+                TemperatureC = (int)(json["daily"][0]["temp"].Value<double>("day") - 273.15),
                 Summary = json["daily"][0]["weather"][0].Value<string>("main")
             })
             .ToArray();
