@@ -35,37 +35,22 @@ namespace AspNetSandBox.Controllers
 
             return ConvertResponseToWeatherForecast(response.Content);
 
-            // var rng = new Random();
-
-            //https://api.openweathermap.org/data/2.5/onecall?lat=45.657974&lon=25.601198&exclude=hourly,minutely&appid=56bb96d9fedf1b3044e60b0760f4278d
-            //return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-            //{
-            //    Date = DateTime.Now.AddDays(index),
-            //    TemperatureC = rng.Next(-20, 55),
-            //    Summary = Summaries[rng.Next(Summaries.Length)]
-            //})
-            //.ToArray();
-
-
-
         }
 
         public IEnumerable<WeatherForecast> ConvertResponseToWeatherForecast(string content)
         {
             var json = JObject.Parse(content);
             var rng = new Random();
-
-            JToken jsonDailyWeather = json["daily"][1];
-           
             
             return Enumerable.Range(1, 5).Select(index =>
             {
+                JToken jsonDailyWeather = json["daily"][index];
                 long unixDateTime = jsonDailyWeather.Value<long>("dt");
                 
                 return new WeatherForecast
                 {
                     Date = DateTimeOffset.FromUnixTimeSeconds(unixDateTime).Date,
-                    TemperatureC = (int)(jsonDailyWeather["temp"].Value<double>("day") - 273.15),
+                    TemperatureC = (int)Math.Round(jsonDailyWeather["temp"].Value<double>("day") - 273.15),
                     Summary = jsonDailyWeather["weather"][0].Value<string>("main")
                 };
             })
