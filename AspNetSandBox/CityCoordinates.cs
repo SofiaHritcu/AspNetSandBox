@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace AspNetSandBox
 {
-    public class Coordinates
+    public class CityCoordinates
     {
         public double  Lat { get; set; }
 
