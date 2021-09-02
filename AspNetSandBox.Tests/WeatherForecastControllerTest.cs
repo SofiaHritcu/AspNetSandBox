@@ -19,8 +19,9 @@ namespace AspNetSandBox.Tests
 
             // Assert
             var weatherForecastForTomorrow = ((WeatherForecast[])weatherForecasts)[0];
-            Assert.Equal("Rain", weatherForecastForTomorrow.Summary);
-            Assert.Equal(13, weatherForecastForTomorrow.TemperatureC);
+            Assert.Equal("Clear", weatherForecastForTomorrow.Summary);
+            Assert.Equal(18, weatherForecastForTomorrow.TemperatureC);
+            Assert.Equal(new DateTime(2021,9,3), weatherForecastForTomorrow.Date);
         }
     }
 }
