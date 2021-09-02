@@ -14,16 +14,6 @@ namespace AspNetSandBox.Controllers
     public class WeatherForecastController : ControllerBase
     {
         private const float KELVIN_CONST = 273.15f;
-        private static readonly string[] Summaries = new[]
-        {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
-
-
-        public WeatherForecastController()
-        {
-
-        }
 
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
