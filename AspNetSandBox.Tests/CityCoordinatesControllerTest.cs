@@ -11,16 +11,15 @@ namespace AspNetSandBox.Tests
 {
     public class CityCoordinatesControllerTest
     {
-        private string LoadJsonFromResource()
+        private string LoadJsonFromResource(string city)
         {
             var assembly = this.GetType().Assembly;
             var assemblyName = assembly.GetName().Name;
-            var resourceName = $"{assemblyName}.DataFromWeatherApiCityCoordinates.json";
+            var resourceName = $"{assemblyName}.DataFromWeatherApiCityCoordinates"+city+".json";
             var resourceStream = assembly.GetManifestResourceStream(resourceName);
             using (var tr = new StreamReader(resourceStream))
             {
                 return tr.ReadToEnd();
-
             }
         }
 
@@ -28,7 +27,7 @@ namespace AspNetSandBox.Tests
         public void ShouldConvertResponseToBucharestCoordinates()
         {
             //Assume
-            string coordinatesJson = LoadJsonFromResource();
+            string coordinatesJson = LoadJsonFromResource("Bucharest");
             CityCoordinatesController cityCoordinatesController = new CityCoordinatesController("Bucharest");
 
             //Act
@@ -38,6 +37,21 @@ namespace AspNetSandBox.Tests
             Assert.Equal(26.1063, cityCoordinates.Long);
             Assert.Equal(44.4323, cityCoordinates.Lat);
         
+        }
+
+        [Fact]
+        public void ShouldConvertResponseToAtheneCoordinates()
+        {
+            //Assume
+            string coordinatesJson = LoadJsonFromResource("Athene");
+            CityCoordinatesController cityCoordinatesController = new CityCoordinatesController("Athene");
+
+            //Act
+            CityCoordinates cityCoordinates = cityCoordinatesController.ConvertResponseToCityCoordinates(coordinatesJson);
+
+            //Assert
+            Assert.Equal(23.7162, cityCoordinates.Long);
+            Assert.Equal(37.9795, cityCoordinates.Lat);
         }
 
     }
