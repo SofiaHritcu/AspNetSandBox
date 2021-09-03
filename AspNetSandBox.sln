@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.31624.102
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetSandBox", "AspNetSandBox\AspNetSandBox.csproj", "{2EEEA76B-C348-47ED-B816-CBA51841492D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetSandBox.Tests", "AspNetSandBox.Tests\AspNetSandBox.Tests.csproj", "{68741684-72F5-4A0D-84B6-6162A6244357}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetSandBox.Tests", "AspNetSandBox.Tests\AspNetSandBox.Tests.csproj", "{68741684-72F5-4A0D-84B6-6162A6244357}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

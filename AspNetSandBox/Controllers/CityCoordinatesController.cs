@@ -12,9 +12,9 @@ namespace AspNetSandBox.Controllers
         private string apiKey;
         private string cityName;
 
-        public CityCoordinatesController(string apiKey = "56bb96d9fedf1b3044e60b0760f4278d", string cityName = "London")
+        public CityCoordinatesController(string cityName)
         {
-            this.apiKey = apiKey;
+            this.apiKey = "56bb96d9fedf1b3044e60b0760f4278d";
             this.cityName = cityName;
         }
 
