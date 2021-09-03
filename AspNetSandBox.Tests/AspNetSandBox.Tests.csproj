@@ -11,12 +11,14 @@
     <None Remove="DataFromWeatherApi.json" />
     <None Remove="DataFromWeatherApiCityCoordinatesAthene.json" />
     <None Remove="DataFromWeatherApiCityCoordinatesBucharest.json" />
+    <None Remove="DataFromWeatherApiCityCoordinatesChicago.json" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="DataFromWeatherApi.json" />
     <EmbeddedResource Include="DataFromWeatherApiCityCoordinatesAthene.json" />
     <EmbeddedResource Include="DataFromWeatherApiCityCoordinatesBucharest.json" />
+    <EmbeddedResource Include="DataFromWeatherApiCityCoordinatesChicago.json" />
   </ItemGroup>
 
   <ItemGroup>

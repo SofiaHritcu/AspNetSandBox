@@ -54,6 +54,21 @@ namespace AspNetSandBox.Tests
             Assert.Equal(37.9795, cityCoordinates.Lat);
         }
 
+        [Fact]
+        public void ShouldConvertResponseToChicagoCoordinates()
+        {
+            //Assume
+            string coordinatesJson = LoadJsonFromResource("Chicago");
+            CityCoordinatesController cityCoordinatesController = new CityCoordinatesController("Chicago");
+
+            //Act
+            CityCoordinates cityCoordinates = cityCoordinatesController.ConvertResponseToCityCoordinates(coordinatesJson);
+
+            //Assert
+            Assert.Equal(-87.65, cityCoordinates.Long);
+            Assert.Equal(41.85, cityCoordinates.Lat);
+        }
+
     }
 
 }
