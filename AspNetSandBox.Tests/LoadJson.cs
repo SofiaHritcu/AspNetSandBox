@@ -2,19 +2,20 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace AspNetSandBox.Tests
 {
-    class LoadJson
+    static class LoadJson
     {
 
-        public string LoadJsonFromResource(string filename)
+        public static string LoadJsonFromResource(string filename)
         {
-            var assembly = this.GetType().Assembly;
+            var assembly = Assembly.GetCallingAssembly();
             var assemblyName = assembly.GetName().Name;
-            var resourceName = $"{assemblyName}." + filename + ".json";
+            var resourceName = $"{assemblyName}.{filename}.json";
             var resourceStream = assembly.GetManifestResourceStream(resourceName);
             using (var tr = new StreamReader(resourceStream))
             {

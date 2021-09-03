@@ -16,8 +16,7 @@ namespace AspNetSandBox.Tests
         public void ShouldConvertResponseToBucharestCoordinates()
         {
             //Assume
-            LoadJson loader = new LoadJson();
-            string coordinatesJson = loader.LoadJsonFromResource("DataFromWeatherApiCityCoordinatesBucharest");
+            string coordinatesJson = LoadJson.LoadJsonFromResource("DataFromWeatherApiCityCoordinatesBucharest");
             CityCoordinatesController cityCoordinatesController = new CityCoordinatesController("Bucharest");
 
             //Act
@@ -33,8 +32,7 @@ namespace AspNetSandBox.Tests
         public void ShouldConvertResponseToAtheneCoordinates()
         {
             //Assume
-            LoadJson loader = new LoadJson();
-            string coordinatesJson = loader.LoadJsonFromResource("DataFromWeatherApiCityCoordinatesAthene");
+            string coordinatesJson = LoadJson.LoadJsonFromResource("DataFromWeatherApiCityCoordinatesAthene");
             CityCoordinatesController cityCoordinatesController = new CityCoordinatesController("Athene");
 
             //Act
@@ -49,8 +47,7 @@ namespace AspNetSandBox.Tests
         public void ShouldConvertResponseToChicagoCoordinates()
         {
             //Assume
-            LoadJson loader = new LoadJson();
-            string coordinatesJson = loader.LoadJsonFromResource("DataFromWeatherApiCityCoordinatesChicago");
+            string coordinatesJson = LoadJson.LoadJsonFromResource("DataFromWeatherApiCityCoordinatesChicago");
             CityCoordinatesController cityCoordinatesController = new CityCoordinatesController("Chicago");
 
             //Act

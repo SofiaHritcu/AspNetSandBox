@@ -13,8 +13,7 @@ namespace AspNetSandBox.Tests
         public void ShouldConvertResponseToWeatherForecast()
         {
             // Assume
-            LoadJson loader = new LoadJson();
-            string content = loader.LoadJsonFromResource("DataFromWeatherApi");
+            string content = LoadJson.LoadJsonFromResource("DataFromWeatherApi");
             var weatherForecastController = new WeatherForecastController();
 
             // Act
@@ -31,8 +30,7 @@ namespace AspNetSandBox.Tests
         public void ShouldConvertResponseToWeatherForecastAfterTomorrow()
         {
             // Assume
-            LoadJson loader = new LoadJson();
-            string content = loader.LoadJsonFromResource("DataFromWeatherApi");
+            string content = LoadJson.LoadJsonFromResource("DataFromWeatherApi");
             var weatherForecastController = new WeatherForecastController();
 
             // Act
