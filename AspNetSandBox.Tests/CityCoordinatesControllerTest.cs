@@ -11,17 +11,6 @@ namespace AspNetSandBox.Tests
 {
     public class CityCoordinatesControllerTest
     {
-        private string LoadJsonFromResource(string city)
-        {
-            var assembly = this.GetType().Assembly;
-            var assemblyName = assembly.GetName().Name;
-            var resourceName = $"{assemblyName}.DataFromWeatherApiCityCoordinates"+city+".json";
-            var resourceStream = assembly.GetManifestResourceStream(resourceName);
-            using (var tr = new StreamReader(resourceStream))
-            {
-                return tr.ReadToEnd();
-            }
-        }
 
         [Fact]
         public void ShouldConvertResponseToBucharestCoordinates()
