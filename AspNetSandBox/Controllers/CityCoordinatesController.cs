@@ -11,7 +11,7 @@ namespace AspNetSandBox.Controllers
     {
         private string apiKey;
         private string cityName;
-
+        
         public CityCoordinatesController(string cityName)
         {
             this.apiKey = "56bb96d9fedf1b3044e60b0760f4278d";
@@ -30,6 +30,7 @@ namespace AspNetSandBox.Controllers
             return ConvertResponseToCityCoordinates(response.Content);
         }
 
+        [NonAction]
         public CityCoordinates ConvertResponseToCityCoordinates(string content)
         {
             var cityJson = JObject.Parse(content);

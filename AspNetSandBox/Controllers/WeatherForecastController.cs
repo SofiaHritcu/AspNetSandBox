@@ -28,6 +28,7 @@ namespace AspNetSandBox.Controllers
 
         }
 
+        [NonAction]
         public IEnumerable<WeatherForecast> ConvertResponseToWeatherForecast(string content, int days = 5)
         {
             var json = JObject.Parse(content);
@@ -49,6 +50,7 @@ namespace AspNetSandBox.Controllers
             .ToArray();
         }
 
+        [NonAction]
         private static int ExtractCelsiusTemperatureFromDailyWeather(JToken jsonDailyWeather)
         {
             return (int)Math.Round(jsonDailyWeather["temp"].Value<double>("day") - KELVIN_CONST);
