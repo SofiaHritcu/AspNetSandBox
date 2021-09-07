@@ -49,6 +49,14 @@ namespace AspNetSandBox
 
         public void Add(Book value)
         {
+            if ( value == null)
+            {
+                throw new Exception("Book cannot be null !");
+            }
+            else if (value.Author == null || value.Title == null || value.Language == null)
+            {
+                throw new Exception("Book fields should not be null !");
+            }
             value.Id = GenerateId();
             books.Add(value);
         }
