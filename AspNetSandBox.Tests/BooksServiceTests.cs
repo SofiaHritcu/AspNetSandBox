@@ -1,14 +1,46 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace AspNetSandBox.Tests
 {
     public class BooksServiceTests
     {
+        [Fact]
+        public void ShouldGetBookValidId()
+        {
+            //Assume
+            IBooksService booksService = new BooksService();
+
+            //Act
+            booksService.Add(new Book
+            {
+                Title = "Test Book Valid Id",
+                Author = "Test Author Valid Id",
+                Language = "Test Language Valid Id"
+            });
+
+            //Assert
+            Assert.Equal("Test Book Valid Id", booksService.Get(3).Title);
+        }
+
+        [Fact]
+        public void ShouldNotGetBookInvalidId()
+        {
+            //Assume
+            IBooksService booksService = new BooksService();
+
+            try
+            {
+                //Act
+                booksService.Get(0);
+            }
+            catch (Exception e)
+            {
+                //Assert
+                Assert.Equal("Invalid id !", e.Message);
+            }
+        }
+
         [Fact]
         public void ShouldAddValidBook()
         {

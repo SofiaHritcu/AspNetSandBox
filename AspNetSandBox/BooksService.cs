@@ -43,6 +43,10 @@ namespace AspNetSandBox
 
         public Book Get(int id)
         {
+            if ( id < 1 || id >= currentId)
+            {
+                throw new Exception("Invalid id !");
+            }
             return books.Single(b => b.Id == id);
         }
 
