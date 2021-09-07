@@ -122,5 +122,71 @@ namespace AspNetSandBox.Tests
             //Assert
             Assert.Equal("Test Book 1", booksService.Get(3).Title);
         }
+
+        [Fact]
+        public void ShouldUpdateValidBook()
+        {
+            //Assume
+            IBooksService booksService = new BooksService();
+
+            //Act
+            booksService.Add(new Book
+            {
+                Title = "Test Book",
+                Author = "Test Author",
+                Language = "Test Language"
+            });
+
+            booksService.Update(3, new Book
+            {
+                Title = "Test Book Updated",
+                Author = "Test Author Updated",
+                Language = "Test Language Updated"
+            });
+
+            //Assert
+            Assert.True(booksService.Get(3).Title == "Test Book Updated" &&
+                        booksService.Get(3).Author == "Test Author Updated" &&
+                        booksService.Get(3).Language == "Test Language Updated");
+        }
+
+
+        [Fact]
+        public void ShouldNotUpdateInvalidBook()
+        {
+            //Assume
+            IBooksService booksService = new BooksService();
+
+            try
+            {
+                //Act
+                booksService.Update(10, new Book
+                {
+                    Title = "Test Book Updated",
+                    Author = "Test Author Updated",
+                    Language = "Test Language Updated"
+                });
+            }catch (Exception e)
+            {
+                Assert.Equal("Invalid id !", e.Message);
+            }
+        }
+
+        [Fact]
+        public void ShouldNotUpdateBookWithInvalidValue()
+        {
+            //Assume
+            IBooksService booksService = new BooksService();
+
+            try
+            {
+                //Act
+                booksService.Update(10, new Book());
+            }
+            catch (Exception e)
+            {
+                Assert.Equal("Book fields should not be null !", e.Message);
+            }
+        }
     }
 }
