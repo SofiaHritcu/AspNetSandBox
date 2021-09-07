@@ -43,17 +43,38 @@ namespace AspNetSandBox
 
         public Book Get(int id)
         {
-            if ( id < 1 || id >= currentId)
-            {
-                throw new Exception("Invalid id !");
-            }
+            CheckId(id);
             return books.Single(b => b.Id == id);
         }
 
+        private static void CheckId(int id)
+        {
+            if (id < 1 || id >= currentId)
+            {
+                throw new Exception("Invalid id !");
+            }
+        }
 
         public void Add(Book value)
         {
-            if ( value == null)
+            CheckBook(value);
+            value.Id = GenerateId();
+            books.Add(value);
+        }
+
+
+        public void Update(int id, Book value)
+        {
+            CheckBook(value);
+            Book bookToBeUpdated = Get(id);
+            bookToBeUpdated.Author = value.Author;
+            bookToBeUpdated.Title = value.Title;
+            bookToBeUpdated.Language = value.Language;
+        }
+
+        private static void CheckBook(Book value)
+        {
+            if (value == null)
             {
                 throw new Exception("Book cannot be null !");
             }
@@ -61,15 +82,7 @@ namespace AspNetSandBox
             {
                 throw new Exception("Book fields should not be null !");
             }
-            value.Id = GenerateId();
-            books.Add(value);
         }
-
-
-        public void Update(int id, string value)
-        {
-        }
-
 
         public void Delete(int id)
         {
