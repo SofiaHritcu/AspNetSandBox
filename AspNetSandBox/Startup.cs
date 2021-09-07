@@ -32,7 +32,11 @@ namespace AspNetSandBox
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "ApiSandbox", Version = "v1" });
             });
+            
             services.AddSingleton<IBooksService, BooksService>();
+            // services.AddScoped<IBooksService, BooksService>();
+            // services.AddTransient<IBooksService, BooksService>(); - reinstantiate service each time
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
