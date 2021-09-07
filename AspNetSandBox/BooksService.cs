@@ -40,7 +40,7 @@ namespace AspNetSandBox
         }
 
 
-        public void Update(Book value)
+        public void Add(Book value)
         {
             int id = books.Count + 1;
             value.Id = id;
@@ -48,7 +48,7 @@ namespace AspNetSandBox
         }
 
 
-        public void Put(int id, string value)
+        public void Update(int id, string value)
         {
         }
 
