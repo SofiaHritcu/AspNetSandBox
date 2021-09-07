@@ -188,5 +188,48 @@ namespace AspNetSandBox.Tests
                 Assert.Equal("Book fields should not be null !", e.Message);
             }
         }
+
+        [Fact]
+        public void ShouldDeleteValidBook()
+        {
+            //Assume
+            IBooksService booksService = new BooksService();
+
+            //Act
+            booksService.Add(new Book
+            {
+                Title = "Test Book Delete",
+                Author = "Test Author Delete",
+                Language = "Test Language Delete"
+            });
+            booksService.Delete(3);
+
+            //Assert
+            try
+            {
+                booksService.Get(3);
+            }catch (Exception e)
+            {
+                Assert.Equal("Sequence contains no matching element", e.Message);
+            }
+        }
+
+        [Fact]
+        public void ShouldNotDeleteInvalidBook()
+        {
+            //Assume
+            IBooksService booksService = new BooksService();
+
+            try
+            {
+                //Act
+                booksService.Delete(3);
+            }
+            catch(Exception e)
+            {
+                //Assert
+                Assert.Equal("Invalid id !", e.Message);
+            }
+        }
     }
 }
