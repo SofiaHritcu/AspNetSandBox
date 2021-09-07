@@ -11,7 +11,7 @@ namespace AspNetSandBox.Tests
     {
 
         [Fact]
-        public void ShouldGetBooks()
+        public void ShouldAddBooksWithUniqueIds()
         {
             //Assume
             IBooksService booksService = new BooksService();
