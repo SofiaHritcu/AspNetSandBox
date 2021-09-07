@@ -8,6 +8,6 @@ namespace AspNetSandBox
         Book Get(int id);
         void Add(Book value);
         void Delete(int id);
-        void Update(int id, string value);
+        void Update(int id, Book value);
     }
 }
