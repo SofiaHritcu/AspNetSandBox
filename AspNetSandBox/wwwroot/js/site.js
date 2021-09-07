@@ -3,7 +3,7 @@
 
 // Write your JavaScript code.
 
-const BASE_URL = 'https://localhost:5001/WeatherForecastOpen';
+const BASE_URL = '/WeatherForecastOpen';
 
 const getWeather = async () => {
     try {

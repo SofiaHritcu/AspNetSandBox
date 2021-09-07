@@ -18,7 +18,7 @@ docker stop web_container_sofia
 
 to remove container
 ```
-docker rm web_container_sofia
+docker rm web_containber_sofia
 ```
 
 ## Deploy to heroku
