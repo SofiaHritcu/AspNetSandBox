@@ -10,7 +10,6 @@ namespace AspNetSandBox.Tests
 {
     static class LoadJson
     {
-
         public static string LoadJsonFromResource(string filename)
         {
             var assembly = Assembly.GetCallingAssembly();
