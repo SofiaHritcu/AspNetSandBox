@@ -454,7 +454,9 @@ $RECYCLE.BIN/
 !.vscode/extensions.json
 /Properties/launchSettings.json
 /Properties/launchSettings.json
-*.json
 /Properties/launchSettings.json
 /Pages/Shared/_Layout.cshtml
 /Pages/Shared/_ValidationScriptsPartial.cshtml
+/AspNetSandBox/Properties/launchSettings.json
+/AspNetSandBox/appsettings.Development.json
+/AspNetSandBox/appsettings.json
