@@ -44,7 +44,7 @@ namespace AspNetSandBox
         public Book Get(int id)
         {
             CheckId(id);
-            return books.Single(b => b.Id == id);
+            return books.Single( _  => _.Id == id);
         }
 
         private static void CheckId(int id)
