@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Linq;
 using RestSharp;
 
 namespace AspNetSandBox.Controllers
 {
-
     /// <summary>
     /// Controller that allows us to get weather forecast from third party API.
     /// </summary>
@@ -35,9 +32,12 @@ namespace AspNetSandBox.Controllers
             Console.WriteLine(response.Content);
 
             return ConvertResponseToWeatherForecast(response.Content);
-
         }
 
+        /// <summary>Converts the response to weather forecast.</summary>
+        /// <param name="content">The content.</param>
+        /// <param name="days">The days.</param>
+        /// <returns>Weather Forecast object.</returns>
         [NonAction]
         public IEnumerable<WeatherForecast> ConvertResponseToWeatherForecast(string content, int days = 5)
         {
