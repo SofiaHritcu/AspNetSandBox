@@ -38,8 +38,5 @@
     <ProjectReference Include="..\AspNetSandBox\AspNetSandBox.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Resource Include="DataFromOpenWeatherApi.json" />
-  </ItemGroup>
 
 </Project>
