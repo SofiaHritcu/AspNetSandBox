@@ -18,7 +18,6 @@ namespace AspNetSandBox
             // Program program1 = new Program();
             // int i = 1;
             // pascal casing -> CreateHostBuilder
-
             CreateHostBuilder(args).Build().Run();
         }
 
