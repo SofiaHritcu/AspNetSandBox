@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace AspNetSandBox
 {
+    /// <summary>CRUD opertaions implementations for books.</summary>
     public class BooksService : IBooksService
     {
         private static List<Book> books;
         private static int currentId;
 
+        /// <summary>Initializes a new instance of the <see cref="BooksService" /> class.</summary>
         public BooksService()
         {
             books = new List<Book>();
@@ -31,20 +32,52 @@ namespace AspNetSandBox
             });
         }
 
-        private int GenerateId()
-        {
-            return currentId++;
-        }
-
+        /// <summary>Gets all instances of books.</summary>
+        /// <returns>
+        ///   <br />
+        /// </returns>
         public IEnumerable<Book> Get()
         {
             return books;
         }
 
+        /// <summary>Gets the  book specified by the identifier.</summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns>
+        ///   <br />
+        /// </returns>
         public Book Get(int id)
         {
             CheckId(id);
             return books.Single(_ => _.Id == id);
+        }
+
+        /// <summary>Adds the specified book.</summary>
+        /// <param name="value">The value.</param>
+        public void Add(Book value)
+        {
+            CheckBook(value);
+            value.Id = GenerateId();
+            books.Add(value);
+        }
+
+        /// <summary>Updates the book specified by identifier with value fields.</summary>
+        /// <param name="id">The identifier.</param>
+        /// <param name="value">The value.</param>
+        public void Update(int id, Book value)
+        {
+            CheckBook(value);
+            Book bookToBeUpdated = Get(id);
+            bookToBeUpdated.Author = value.Author;
+            bookToBeUpdated.Title = value.Title;
+            bookToBeUpdated.Language = value.Language;
+        }
+
+        /// <summary>Deletes the book specified by the identifier.</summary>
+        /// <param name="id">The identifier.</param>
+        public void Delete(int id)
+        {
+            books.Remove(Get(id));
         }
 
         private static void CheckId(int id)
@@ -53,23 +86,6 @@ namespace AspNetSandBox
             {
                 throw new Exception("Invalid id !");
             }
-        }
-
-        public void Add(Book value)
-        {
-            CheckBook(value);
-            value.Id = GenerateId();
-            books.Add(value);
-        }
-
-
-        public void Update(int id, Book value)
-        {
-            CheckBook(value);
-            Book bookToBeUpdated = Get(id);
-            bookToBeUpdated.Author = value.Author;
-            bookToBeUpdated.Title = value.Title;
-            bookToBeUpdated.Language = value.Language;
         }
 
         private static void CheckBook(Book value)
@@ -84,10 +100,9 @@ namespace AspNetSandBox
             }
         }
 
-        public void Delete(int id)
+        private int GenerateId()
         {
-            books.Remove(Get(id));
+            return currentId++;
         }
-
     }
 }
