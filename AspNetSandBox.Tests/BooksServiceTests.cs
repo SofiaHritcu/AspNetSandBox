@@ -14,13 +14,13 @@ namespace AspNetSandBox.Tests
             //Act
             booksService.Add(new Book
             {
-                Title = "Test Book Valid Id",
-                Author = "Test Author Valid Id",
-                Language = "Test Language Valid Id"
+                Title = "War And Peace",
+                Author = "Lev Tolstoi",
+                Language = "english"
             });
 
             //Assert
-            Assert.Equal("Test Book Valid Id", booksService.Get(3).Title);
+            Assert.Equal("War And Peace", booksService.Get(3).Title);
         }
 
         [Fact]
@@ -50,15 +50,15 @@ namespace AspNetSandBox.Tests
             //Act
             booksService.Add(new Book
             {
-                Title = "Test Book Valid",
-                Author = "Test Author Valid",
-                Language = "Test Language Valid"
+                Title = "Murder on the Orient Express",
+                Author = "Agatha Christie",
+                Language = "english"
             });
 
             //Assert
-            Assert.True(booksService.Get(3).Title == "Test Book Valid" && 
-                            booksService.Get(3).Author == "Test Author Valid" && 
-                                booksService.Get(3).Language == "Test Language Valid");
+            Assert.True(booksService.Get(3).Title == "Murder on the Orient Express" && 
+                            booksService.Get(3).Author == "Agatha Christie" && 
+                                booksService.Get(3).Language == "english");
         }
 
         [Fact]
@@ -105,8 +105,8 @@ namespace AspNetSandBox.Tests
             //Act
             booksService.Add( new Book
             {
-                Title = "Test Book 1",
-                Author = "Test Author 1",
+                Title = "Murder on the Orient Express",
+                Author = "Agatha Christie",
                 Language = "english"
             });
 
@@ -114,13 +114,13 @@ namespace AspNetSandBox.Tests
 
             booksService.Add(new Book
             {
-                Title = "Test Book 2",
-                Author = "Test Author 2",
+                Title = "The Da Vinci Code",
+                Author = "Dan Brown",
                 Language = "english"
             });
 
             //Assert
-            Assert.Equal("Test Book 1", booksService.Get(3).Title);
+            Assert.Equal("Murder on the Orient Express", booksService.Get(3).Title);
         }
 
         [Fact]
@@ -132,22 +132,22 @@ namespace AspNetSandBox.Tests
             //Act
             booksService.Add(new Book
             {
-                Title = "Test Book",
-                Author = "Test Author",
-                Language = "Test Language"
+                Title = "Murder on the Orient Express",
+                Author = "Agatha Christie",
+                Language = "english"
             });
 
             booksService.Update(3, new Book
             {
-                Title = "Test Book Updated",
-                Author = "Test Author Updated",
-                Language = "Test Language Updated"
+                Title = "The Da Vinci Code",
+                Author = "Dan Brown",
+                Language = "english"
             });
 
             //Assert
-            Assert.True(booksService.Get(3).Title == "Test Book Updated" &&
-                        booksService.Get(3).Author == "Test Author Updated" &&
-                        booksService.Get(3).Language == "Test Language Updated");
+            Assert.True(booksService.Get(3).Title == "The Da Vinci Code" &&
+                        booksService.Get(3).Author == "Dan Brown" &&
+                        booksService.Get(3).Language == "english");
         }
 
 
@@ -162,9 +162,9 @@ namespace AspNetSandBox.Tests
                 //Act
                 booksService.Update(10, new Book
                 {
-                    Title = "Test Book Updated",
-                    Author = "Test Author Updated",
-                    Language = "Test Language Updated"
+                    Title = "The Da Vinci Code",
+                    Author = "Dan Brown",
+                    Language = "english"
                 });
             }catch (Exception e)
             {
@@ -198,9 +198,9 @@ namespace AspNetSandBox.Tests
             //Act
             booksService.Add(new Book
             {
-                Title = "Test Book Delete",
-                Author = "Test Author Delete",
-                Language = "Test Language Delete"
+                Title = "The Da Vinci Code",
+                Author = "Dan Brown",
+                Language = "english"
             });
             booksService.Delete(3);
 
