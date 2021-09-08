@@ -19,7 +19,7 @@ namespace AspNetSandBox
                 Id = GenerateId(),
                 Title = "To Kill A Mocking Bird",
                 Author = "Harper Lee",
-                Language = "english"
+                Language = "english",
             });
 
             books.Add(new Book
@@ -27,7 +27,7 @@ namespace AspNetSandBox
                 Id = GenerateId(),
                 Title = "Crime&Punishment",
                 Author = "Feodor Dostoievski",
-                Language = "english"
+                Language = "english",
             });
         }
 
@@ -44,7 +44,7 @@ namespace AspNetSandBox
         public Book Get(int id)
         {
             CheckId(id);
-            return books.Single( _  => _.Id == id);
+            return books.Single(_ => _.Id == id);
         }
 
         private static void CheckId(int id)
