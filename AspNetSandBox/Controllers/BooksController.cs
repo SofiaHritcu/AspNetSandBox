@@ -5,10 +5,8 @@ using System.Collections.Generic;
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 namespace AspNetSandBox.Controllers
 {
-    /// <summary>
-    /// BooksController .
-    /// Exposes api CRUD operations for books.
-    /// </summary>
+    /// <summary>BooksController .
+    /// Exposes api CRUD operations for books.</summary>
     [Route("api/[controller]")]
     [ApiController]
     public class BooksController : ControllerBase
