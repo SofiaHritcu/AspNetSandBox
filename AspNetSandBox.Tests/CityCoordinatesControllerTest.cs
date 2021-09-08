@@ -11,34 +11,32 @@ namespace AspNetSandBox.Tests
 {
     public class CityCoordinatesControllerTest
     {
-
         [Fact]
         public void ShouldConvertResponseToBucharestCoordinates()
         {
-            //Assume
+            // Assume
             string coordinatesJson = LoadJson.LoadJsonFromResource("DataFromWeatherApiCityCoordinatesBucharest");
             CityCoordinatesController cityCoordinatesController = new CityCoordinatesController("Bucharest");
 
-            //Act
+            // Act
             CityCoordinates cityCoordinates = cityCoordinatesController.ConvertResponseToCityCoordinates(coordinatesJson);
 
-            //Assert
+            // Assert
             Assert.Equal(26.1063, cityCoordinates.Long);
             Assert.Equal(44.4323, cityCoordinates.Lat);
-        
         }
 
         [Fact]
         public void ShouldConvertResponseToAtheneCoordinates()
         {
-            //Assume
+            // Assume
             string coordinatesJson = LoadJson.LoadJsonFromResource("DataFromWeatherApiCityCoordinatesAthene");
             CityCoordinatesController cityCoordinatesController = new CityCoordinatesController("Athene");
 
-            //Act
+            // Act
             CityCoordinates cityCoordinates = cityCoordinatesController.ConvertResponseToCityCoordinates(coordinatesJson);
 
-            //Assert
+            // Assert
             Assert.Equal(23.7162, cityCoordinates.Long);
             Assert.Equal(37.9795, cityCoordinates.Lat);
         }
@@ -46,18 +44,16 @@ namespace AspNetSandBox.Tests
         [Fact]
         public void ShouldConvertResponseToChicagoCoordinates()
         {
-            //Assume
+            // Assume
             string coordinatesJson = LoadJson.LoadJsonFromResource("DataFromWeatherApiCityCoordinatesChicago");
             CityCoordinatesController cityCoordinatesController = new CityCoordinatesController("Chicago");
 
-            //Act
+            // Act
             CityCoordinates cityCoordinates = cityCoordinatesController.ConvertResponseToCityCoordinates(coordinatesJson);
 
-            //Assert
+            // Assert
             Assert.Equal(-87.65, cityCoordinates.Long);
             Assert.Equal(41.85, cityCoordinates.Lat);
         }
-
     }
-
 }
