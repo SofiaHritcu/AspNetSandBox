@@ -8,7 +8,7 @@ namespace AspNetSandBox.Tests
         [Fact]
         public void ShouldGetBookValidId()
         {
-            //Assume
+            // Assume
             IBooksService booksService = new BooksService();
 
             // Act
@@ -16,7 +16,7 @@ namespace AspNetSandBox.Tests
             {
                 Title = "War And Peace",
                 Author = "Lev Tolstoi",
-                Language = "english"
+                Language = "english",
             });
 
             // Assert
@@ -52,12 +52,12 @@ namespace AspNetSandBox.Tests
             {
                 Title = "Murder on the Orient Express",
                 Author = "Agatha Christie",
-                Language = "english"
+                Language = "english",
             });
 
             // Assert
-            Assert.True(booksService.Get(3).Title == "Murder on the Orient Express" && 
-                            booksService.Get(3).Author == "Agatha Christie" && 
+            Assert.True(booksService.Get(3).Title == "Murder on the Orient Express" &&
+                            booksService.Get(3).Author == "Agatha Christie" &&
                                 booksService.Get(3).Language == "english");
         }
 
@@ -71,7 +71,8 @@ namespace AspNetSandBox.Tests
             {
                 // Act
                 booksService.Add(new Book());
-            } catch (Exception e )
+            }
+            catch (Exception e)
             {
                 // Assert
                 Assert.Equal("Book fields should not be null !", e.Message);
@@ -103,11 +104,11 @@ namespace AspNetSandBox.Tests
             IBooksService booksService = new BooksService();
 
             // Act
-            booksService.Add( new Book
+            booksService.Add(new Book
             {
                 Title = "Murder on the Orient Express",
                 Author = "Agatha Christie",
-                Language = "english"
+                Language = "english",
             });
 
             booksService.Delete(2);
@@ -116,10 +117,10 @@ namespace AspNetSandBox.Tests
             {
                 Title = "The Da Vinci Code",
                 Author = "Dan Brown",
-                Language = "english"
+                Language = "english",
             });
 
-            //  Assert
+            // Assert
             Assert.Equal("Murder on the Orient Express", booksService.Get(3).Title);
         }
 
@@ -134,14 +135,14 @@ namespace AspNetSandBox.Tests
             {
                 Title = "Murder on the Orient Express",
                 Author = "Agatha Christie",
-                Language = "english"
+                Language = "english",
             });
 
             booksService.Update(3, new Book
             {
                 Title = "The Da Vinci Code",
                 Author = "Dan Brown",
-                Language = "english"
+                Language = "english",
             });
 
             // Assert
@@ -149,7 +150,6 @@ namespace AspNetSandBox.Tests
                         booksService.Get(3).Author == "Dan Brown" &&
                         booksService.Get(3).Language == "english");
         }
-
 
         [Fact]
         public void ShouldNotUpdateInvalidBook()
@@ -164,9 +164,10 @@ namespace AspNetSandBox.Tests
                 {
                     Title = "The Da Vinci Code",
                     Author = "Dan Brown",
-                    Language = "english"
+                    Language = "english",
                 });
-            }catch (Exception e)
+            }
+            catch (Exception e)
             {
                 Assert.Equal("Invalid id !", e.Message);
             }
@@ -200,7 +201,7 @@ namespace AspNetSandBox.Tests
             {
                 Title = "The Da Vinci Code",
                 Author = "Dan Brown",
-                Language = "english"
+                Language = "english",
             });
             booksService.Delete(3);
 
@@ -208,7 +209,8 @@ namespace AspNetSandBox.Tests
             try
             {
                 booksService.Get(3);
-            }catch (Exception e)
+            }
+            catch (Exception e)
             {
                 Assert.Equal("Sequence contains no matching element", e.Message);
             }
@@ -225,7 +227,7 @@ namespace AspNetSandBox.Tests
                 // Act
                 booksService.Delete(3);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 // Assert
                 Assert.Equal("Invalid id !", e.Message);

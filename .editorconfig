@@ -1,4 +1,7 @@
-﻿[*.cs]
+﻿[Startup.cs, Program.cs, Index.cshtml.cs, Privacy.cshtml.cs]
+generated_code = true
+
+[*.cs]
 
 # SA1101: Prefix local calls with this
 dotnet_diagnostic.SA1101.severity = none
@@ -11,3 +14,12 @@ dotnet_diagnostic.SA1208.severity = none
 
 # SA1633: File should have header
 dotnet_diagnostic.SA1633.severity = none
+
+# SA1404: Code analysis suppression should have justification
+dotnet_diagnostic.SA1404.severity = none
+
+# CS1591: Missing XML comment for publicly visible type or member
+dotnet_diagnostic.CS1591.severity = none
+
+# SA1600: Elements should be documented
+dotnet_diagnostic.SA1600.severity = none
