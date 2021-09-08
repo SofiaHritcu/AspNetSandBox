@@ -9,12 +9,22 @@ using RestSharp;
 
 namespace AspNetSandBox.Controllers
 {
+
+    /// <summary>
+    /// Controller that allows us to get weather forecast from third party API.
+    /// </summary>
     [ApiController]
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
     {
-        private const float KELVIN_CONST = 273.15f;
+        private const float KELVINCONST = 273.15f;
 
+        /// <summary>
+        ///  Getting weather forecast for 5 days.
+        /// </summary>
+        /// <returns>
+        /// Enumerable of weather forecast objects.
+        /// </returns>
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {
@@ -33,7 +43,6 @@ namespace AspNetSandBox.Controllers
         {
             var json = JObject.Parse(content);
             var rng = new Random();
-            
             return Enumerable.Range(1, days).Select(index =>
             {
                 var jsonDailyWeather = json["daily"][index];
@@ -44,7 +53,7 @@ namespace AspNetSandBox.Controllers
                 {
                     Date = DateTimeOffset.FromUnixTimeSeconds(unixDateTime).Date,
                     TemperatureC = ExtractCelsiusTemperatureFromDailyWeather(jsonDailyWeather),
-                    Summary = weatherSummary
+                    Summary = weatherSummary,
                 };
             })
             .ToArray();
@@ -53,7 +62,7 @@ namespace AspNetSandBox.Controllers
         [NonAction]
         private static int ExtractCelsiusTemperatureFromDailyWeather(JToken jsonDailyWeather)
         {
-            return (int)Math.Round(jsonDailyWeather["temp"].Value<double>("day") - KELVIN_CONST);
+            return (int)Math.Round(jsonDailyWeather["temp"].Value<double>("day") - KELVINCONST);
         }
     }
 }
