@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AspNetSandBox.Tests
 {
-    static class LoadJson
+    internal static class LoadJson
     {
         public static string LoadJsonFromResource(string filename)
         {
