@@ -8,7 +8,6 @@ namespace AspNetSandBox.Tests
 {
     public class WeatherForecastControllerTest
     {
-
         [Fact]
         public void ShouldConvertResponseToWeatherForecast()
         {
@@ -17,13 +16,13 @@ namespace AspNetSandBox.Tests
             var weatherForecastController = new WeatherForecastController();
 
             // Act
-            IEnumerable<WeatherForecast> weatherForecasts =  weatherForecastController.ConvertResponseToWeatherForecast(content);
+            IEnumerable<WeatherForecast> weatherForecasts = weatherForecastController.ConvertResponseToWeatherForecast(content);
 
             // Assert
             var weatherForecastForTomorrow = ((WeatherForecast[])weatherForecasts)[0];
             Assert.Equal("Clear", weatherForecastForTomorrow.Summary);
             Assert.Equal(18, weatherForecastForTomorrow.TemperatureC);
-            Assert.Equal(new DateTime(2021,9,3), weatherForecastForTomorrow.Date);
+            Assert.Equal(new DateTime(2021, 9, 3), weatherForecastForTomorrow.Date);
         }
 
         [Fact]
