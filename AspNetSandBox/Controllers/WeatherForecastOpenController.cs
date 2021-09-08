@@ -1,48 +1,47 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.IO;
-using System.Linq;
 using System.Net;
 using System.Text;
-using System.Text.Json;
-using System.Threading.Tasks;
 using AspNetSandBox.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 namespace AspNetSandBox.Controllers
 {
+    /// <summary>Weather Forecast for 7 days using third party api.</summary>
     [ApiController]
     [Route("[controller]")]
     public class WeatherForecastOpenController : ControllerBase
     {
-        private readonly ILogger<WeatherForecastOpenController> _logger;
-        private String keyAPI;
+        private string keyAPI;
         private double latitude;
         private double longitude;
 
-        public WeatherForecastOpenController(ILogger<WeatherForecastOpenController> logger)
+        /// <summary>Initializes a new instance of the <see cref="WeatherForecastOpenController" /> class.</summary>
+        public WeatherForecastOpenController()
         {
-            _logger = logger;
             keyAPI = "56bb96d9fedf1b3044e60b0760f4278d";
             latitude = 45.657974;
             longitude = 25.601198;
         }
 
+        /// <summary>Gets weather forecasts for the current day and the 7 days after it.</summary>
+        /// <returns>Weather Forecast Open object.</returns>
         [HttpGet]
         public WeatherForecastOpen Get()
         {
             // form url with given parameters
-            String url = "https://api.openweathermap.org/data/2.5/onecall?lat=" + latitude.ToString() + "&lon=" + longitude.ToString() + "&exclude=hourly,minutely&units=metric&appid=" + keyAPI.ToString();
+            string url = "https://api.openweathermap.org/data/2.5/onecall?lat=" + latitude.ToString() + "&lon=" + longitude.ToString() + "&exclude=hourly,minutely&units=metric&appid=" + keyAPI.ToString();
             Console.WriteLine(url);
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+
             // set method for http request
             request.Method = "GET";
+
             // set content type for http request
             request.ContentType = "application/json";
+
             // set type for response
             request.Accept = "application/json";
             WebResponse weatherForecastResponse = request.GetResponse();
@@ -67,18 +66,20 @@ namespace AspNetSandBox.Controllers
                 DateTime dtDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc);
                 DateTime dateDaily = dtDateTime.AddSeconds((double)dailyForecasts[i].dt);
                 int difference = 0;
-                String timeFromNow = "";
-                if ( i == 0 )
+                string timeFromNow = string.Empty;
+                if (i == 0)
                 {
                     difference = (dateDaily - DateTime.Now).Hours;
                     timeFromNow = "in " + difference + " hours";
-                } else
+                }
+                else
                 {
-                    if ( i == 1)
+                    if (i == 1)
                     {
                         difference = (dateDaily - DateTime.Now).Days;
                         timeFromNow = "in " + difference + " day";
-                    } else
+                    }
+                    else
                     {
                         difference = (dateDaily - DateTime.Now).Days;
                         timeFromNow = "in " + difference + " days";
@@ -87,8 +88,8 @@ namespace AspNetSandBox.Controllers
 
                 double dailyTemperature = dailyForecasts[i].temp.day;
                 double windSpeed = dailyForecasts[i].wind_speed;
-                String dailyDescription = dailyForecasts[i].weather[0].description;
-                String dailyIconCode = dailyForecasts[i].weather[0].icon;
+                string dailyDescription = dailyForecasts[i].weather[0].description;
+                string dailyIconCode = dailyForecasts[i].weather[0].icon;
 
                 DailyWeatherForecastOpen dailyWeather = new DailyWeatherForecastOpen(timeFromNow, dailyTemperature, windSpeed, dailyDescription, dailyIconCode);
                 dailyWeatherForecasts.Add(dailyWeather);
@@ -96,13 +97,11 @@ namespace AspNetSandBox.Controllers
 
             // constri=uct forecast containg daily forecasts
             double currentTemperature = (double)deserializedWeather.current.temp;
-            String currentDescription = deserializedWeather.current.weather[0].description;
-            String currentIcon = deserializedWeather.current.weather[0].icon;
+            string currentDescription = deserializedWeather.current.weather[0].description;
+            string currentIcon = deserializedWeather.current.weather[0].icon;
             WeatherForecastOpen weatherForecast = new WeatherForecastOpen(currentTemperature, currentDescription, currentIcon);
             weatherForecast.DailyForecasts = dailyWeatherForecasts;
             return weatherForecast;
         }
-
-       
     }
 }
