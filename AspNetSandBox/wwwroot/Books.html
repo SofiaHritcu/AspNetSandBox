@@ -1,0 +1,48 @@
+﻿<html>
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+</head>
+<body>
+    <div class="container-fluid">
+        <row justify="center" align="center">
+            <h1 class="primary my-5 text-uppercase font-weight-light">Books</h1>
+        </row>
+        <row justify="center" align="center">
+            <table class="table table-hover" id="booksTable">
+                <thead>
+                    <tr>
+                        <th scope="col">
+                            Title
+                        </th>
+                        <th scope="col">
+                            Author
+                        </th>
+                        <th scope="col">
+                            Language
+                        </th>
+                        <th scope="col" class="text-center">
+                            Actions
+                        </th>
+                    </tr>
+                </thead>
+                <tbody id="books">
+                </tbody>
+            </table>
+            <div class="d-flex justify-content-center">
+                <div class="spinner-grow" role="status" id="loading">
+                    <span class="visually-hidden"></span>
+                </div>
+            </div>
+        </row>
+
+    </div>
+    <script src="js/books.js"></script>
+</body>
+</html>
