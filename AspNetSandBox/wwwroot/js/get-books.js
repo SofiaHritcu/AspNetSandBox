@@ -44,7 +44,10 @@ function createActionsColumn(book, tableRow) {
 
     const detailsButton = document.createElement('button');
     detailsButton.setAttribute('type', 'button');
+    detailsButton.setAttribute('data-toggle', 'modal');
+    detailsButton.setAttribute('data-target', '#getBookModal');
     detailsButton.setAttribute('class', 'btn btn-outline-dark mx-2');
+    detailsButton.setAttribute('onclick', 'getBook(this)');
     detailsButton.innerHTML = '<i class="bi bi-search"></i> Details'
     actionsColumn.appendChild(detailsButton);
 
