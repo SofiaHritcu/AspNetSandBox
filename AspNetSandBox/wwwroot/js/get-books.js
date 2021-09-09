@@ -52,19 +52,23 @@ function loadTable(data) {
         document.getElementById('books').innerHTML = "No books.";
         return;
     }
-    console.log(data)
+    document.getElementById('books').innerHTML = ''
     data.forEach(book => {
         addBookInstanceToTable(book);
     })
 }
 
-
-// feth data from backend
-window.addEventListener('load', function () {
-    fetch("https://localhost:5001/api/books")
+async function fetchBooks() {
+    console.log('fetching...')
+    fetch("/api/books")
         .then((result) => result.json())
         .then((data) => {
             loadTable(data);
             document.getElementById('loading').setAttribute('style', 'display: none');
         })
+}
+
+// feth data from backend
+window.addEventListener('load', async function () {
+    await fetchBooks();
 });

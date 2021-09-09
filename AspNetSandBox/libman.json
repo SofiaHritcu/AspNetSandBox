@@ -1,0 +1,14 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "vuetify@2.5.8",
+      "destination": "wwwroot/lib/vuetify/"
+    },
+    {
+      "library": "vue@3.2.11",
+      "destination": "wwwroot/lib/vue/"
+    }
+  ]
+}
