@@ -8,7 +8,7 @@ window.addEventListener('load', async function () {
         const author = document.getElementById('authorInput').value;
         const language = document.getElementById('languageInput').value;
 
-        await postBook(title, author, language);
+        await postBookCall(title, author, language);
         alert('You have added the book!', 'success');
     });
 })
@@ -20,7 +20,7 @@ function alert(message, type) {
     document.getElementById('headerRow').append(wrapper);
 }
 
-async function postBook(title, author, language) {
+async function postBookCall(title, author, language) {
     fetch("/api/books", {
         method: "POST",
         body: JSON.stringify({
@@ -32,8 +32,8 @@ async function postBook(title, author, language) {
             "Content-type": "application/json; charset=UTF-8"
         }
     })
-        .then(async function () {
-            await fetchBooks();
-            document.getElementById('closeModal').click();
-        });
+    .then(async function () {
+        await fetchBooks();
+        document.getElementById('closeModal').click();
+    });
 }
