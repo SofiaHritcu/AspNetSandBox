@@ -1,4 +1,4 @@
-﻿namespace AspNetSandBox
+﻿namespace AspNetSandBox.Models
 {
     /// <summary>Book Class.</summary>
     public class Book

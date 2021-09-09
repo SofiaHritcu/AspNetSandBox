@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AspNetSandBox.Models;
+using System;
 using Xunit;
 
 namespace AspNetSandBox.Tests
