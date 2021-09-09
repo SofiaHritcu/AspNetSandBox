@@ -31,7 +31,10 @@ function createActionsColumn(book, tableRow) {
     
     const editButton = document.createElement('a');
     editButton.setAttribute('type', 'button');
+    editButton.setAttribute('data-toggle', 'modal');
+    editButton.setAttribute('data-target', '#updateBookModal');
     editButton.setAttribute('class', 'btn btn-outline-dark mx-2');
+    editButton.setAttribute('onclick', 'updateBook(this)');
     editButton.innerHTML = '<i class="bi bi-pencil-square"></i> Edit'
     actionsColumn.appendChild(editButton);
 

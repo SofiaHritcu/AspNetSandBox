@@ -16,9 +16,9 @@
 
             <!-- Add Book Button -->
             <button type="button"
-                class="btn btn-outline-dark btn-lg mx-5 my-5"
-                id="addBook"
-                data-toggle="modal" data-target="#addBookModal">
+                    class="btn btn-outline-dark btn-lg mx-5 my-5"
+                    id="addBook"
+                    data-toggle="modal" data-target="#addBookModal">
                 Add Book
             </button>
 
@@ -83,6 +83,37 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Update Book Modal -->
+            <div class="modal fade" id="updateBookModal" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Update Book</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="closeModalUpdate">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="updateBookForm">
+                                <div class="form-group">
+                                    <label for="titleInputUpdate">Title</label>
+                                    <input type="text" class="form-control" id="titleInputUpdate">
+                                </div>
+                                <div class="form-group">
+                                    <label for="authorInputUpdate">Author</label>
+                                    <input type="text" class="form-control" id="authorInputUpdate">
+                                </div>
+                                <div class="form-group">
+                                    <label for="languageInputUpdate">Language</label>
+                                    <input type="text" class="form-control" id="languageInputUpdate">
+                                </div>
+                                <button type="submit" class="btn btn-outline-dark">Update</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </row>
         <row justify="center" align="center">
             <table class="table table-hover" id="booksTable">
@@ -117,5 +148,6 @@
     <script src="js/add-book.js"></script>
     <script src="js/delete-book.js"></script>
     <script src="js/details-book.js"></script>
+    <script src="js/edit-book.js"></script>
 </body>
 </html>
