@@ -3,6 +3,7 @@
 function addBookInstanceToTable(book) {
     const table = document.getElementById('books');
     const bookTableRow = document.createElement('tr');
+    bookTableRow.setAttribute('data-id', book.id);
 
     // title column
     const titleColumn = document.createElement('td');
@@ -28,20 +29,24 @@ function createActionsColumn(book, tableRow) {
     const actionsColumn = document.createElement('td');
     actionsColumn.setAttribute('class', 'text-center');
     
-    const editAnchore = document.createElement('a');
-    editAnchore.setAttribute('class', 'mx-2');
-    editAnchore.innerHTML = '<i class="bi bi-pencil-square"></i> Edit'
-    actionsColumn.appendChild(editAnchore);
+    const editButton = document.createElement('a');
+    editButton.setAttribute('type', 'button');
+    editButton.setAttribute('class', 'btn btn-outline-dark mx-2');
+    editButton.innerHTML = '<i class="bi bi-pencil-square"></i> Edit'
+    actionsColumn.appendChild(editButton);
 
-    const deleteAnchore = document.createElement('a');
-    deleteAnchore.setAttribute('class', 'mx-2');
-    deleteAnchore.innerHTML = '<i class="bi bi-trash"></i> Delete'
-    actionsColumn.appendChild(deleteAnchore);
+    const deleteButton = document.createElement('button');
+    deleteButton.setAttribute('type', 'button');
+    deleteButton.setAttribute('class', 'btn btn-outline-dark mx-2');
+    deleteButton.setAttribute('onclick', 'deleteBook(this)');
+    deleteButton.innerHTML = '<i class="bi bi-trash"></i> Delete'
+    actionsColumn.appendChild(deleteButton);
 
-    const detailsAnchore = document.createElement('a');
-    detailsAnchore.setAttribute('class', 'mx-2');
-    detailsAnchore.innerHTML = '<i class="bi bi-search"></i> Details'
-    actionsColumn.appendChild(detailsAnchore);
+    const detailsButton = document.createElement('button');
+    detailsButton.setAttribute('type', 'button');
+    detailsButton.setAttribute('class', 'btn btn-outline-dark mx-2');
+    detailsButton.innerHTML = '<i class="bi bi-search"></i> Details'
+    actionsColumn.appendChild(detailsButton);
 
     tableRow.appendChild(actionsColumn);
 }
