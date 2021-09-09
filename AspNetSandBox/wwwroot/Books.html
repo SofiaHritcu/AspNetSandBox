@@ -12,13 +12,13 @@
 <body>
     <div class="container-fluid">
         <row justify="center" align="center" id="headerRow">
-            <h1 class="primary my-5 text-uppercase font-weight-light">Books</h1>
+            <h1 class="my-5 text-uppercase font-weight-light">Books</h1>
 
             <!-- Add Book Button -->
             <button type="button"
-                    class="btn btn-outline-primary btn-lg mx-5 my-5"
-                    id="addBook"
-                    data-toggle="modal" data-target="#addBookModal">
+                class="btn btn-outline-dark btn-lg mx-5 my-5"
+                id="addBook"
+                data-toggle="modal" data-target="#addBookModal">
                 Add Book
             </button>
 
@@ -46,7 +46,7 @@
                                     <label for="languageInput">Language</label>
                                     <input type="text" class="form-control" id="languageInput" placeholder="Enter book's language.">
                                 </div>
-                                <button type="submit" class="btn btn-primary">Add</button>
+                                <button type="submit" class="btn btn-outline-dark">Add</button>
                             </form>
                         </div>
                     </div>
@@ -84,5 +84,6 @@
     </div>
     <script src="js/get-books.js"></script>
     <script src="js/add-book.js"></script>
+    <script src="js/delete-book.js"></script>
 </body>
 </html>
