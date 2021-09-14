@@ -6,13 +6,13 @@ using System.Linq;
 namespace AspNetSandBox
 {
     /// <summary>CRUD opertaions implementations for books.</summary>
-    public class BooksService : IBooksService
+    public class BooksInMemoryRepository : IBooksRepository
     {
         private static List<Book> books;
         private static int currentId;
 
-        /// <summary>Initializes a new instance of the <see cref="BooksService" /> class.</summary>
-        public BooksService()
+        /// <summary>Initializes a new instance of the <see cref="BooksInMemoryRepository" /> class.</summary>
+        public BooksInMemoryRepository()
         {
             books = new List<Book>();
             currentId = 1;

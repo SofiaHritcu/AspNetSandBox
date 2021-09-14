@@ -4,13 +4,13 @@ using Xunit;
 
 namespace AspNetSandBox.Tests
 {
-    public class BooksServiceTests
+    public class BooksInMemoryRepositoryTests
     {
         [Fact]
         public void ShouldGetBookValidId()
         {
             // Assume
-            IBooksService booksService = new BooksService();
+            IBooksRepository booksService = new BooksInMemoryRepository();
 
             // Act
             booksService.Add(new Book
@@ -28,7 +28,7 @@ namespace AspNetSandBox.Tests
         public void ShouldNotGetBookInvalidId()
         {
             // Assume
-            IBooksService booksService = new BooksService();
+            IBooksRepository booksService = new BooksInMemoryRepository();
 
             try
             {
@@ -46,7 +46,7 @@ namespace AspNetSandBox.Tests
         public void ShouldAddValidBook()
         {
             // Assume
-            IBooksService booksService = new BooksService();
+            IBooksRepository booksService = new BooksInMemoryRepository();
 
             // Act
             booksService.Add(new Book
@@ -66,7 +66,7 @@ namespace AspNetSandBox.Tests
         public void ShouldNotAddInvalidBook()
         {
             // Assume
-            IBooksService booksService = new BooksService();
+            IBooksRepository booksService = new BooksInMemoryRepository();
 
             try
             {
@@ -84,7 +84,7 @@ namespace AspNetSandBox.Tests
         public void ShouldNotAddNullBook()
         {
             // Assume
-            IBooksService booksService = new BooksService();
+            IBooksRepository booksService = new BooksInMemoryRepository();
 
             try
             {
@@ -102,7 +102,7 @@ namespace AspNetSandBox.Tests
         public void ShouldAddBooksWithUniqueIds()
         {
             // Assume
-            IBooksService booksService = new BooksService();
+            IBooksRepository booksService = new BooksInMemoryRepository();
 
             // Act
             booksService.Add(new Book
@@ -129,7 +129,7 @@ namespace AspNetSandBox.Tests
         public void ShouldUpdateValidBook()
         {
             // Assume
-            IBooksService booksService = new BooksService();
+            IBooksRepository booksService = new BooksInMemoryRepository();
 
             // Act
             booksService.Add(new Book
@@ -156,7 +156,7 @@ namespace AspNetSandBox.Tests
         public void ShouldNotUpdateInvalidBook()
         {
             // Assume
-            IBooksService booksService = new BooksService();
+            IBooksRepository booksService = new BooksInMemoryRepository();
 
             try
             {
@@ -178,7 +178,7 @@ namespace AspNetSandBox.Tests
         public void ShouldNotUpdateBookWithInvalidValue()
         {
             // Assume
-            IBooksService booksService = new BooksService();
+            IBooksRepository booksService = new BooksInMemoryRepository();
 
             try
             {
@@ -195,7 +195,7 @@ namespace AspNetSandBox.Tests
         public void ShouldDeleteValidBook()
         {
             // Assume
-            IBooksService booksService = new BooksService();
+            IBooksRepository booksService = new BooksInMemoryRepository();
 
             // Act
             booksService.Add(new Book
@@ -221,7 +221,7 @@ namespace AspNetSandBox.Tests
         public void ShouldNotDeleteInvalidBook()
         {
             // Assume
-            IBooksService booksService = new BooksService();
+            IBooksRepository booksService = new BooksInMemoryRepository();
 
             try
             {

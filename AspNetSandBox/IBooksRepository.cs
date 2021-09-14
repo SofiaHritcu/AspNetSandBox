@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace AspNetSandBox
 {
     /// <summary>Interface for CRUD operations on books.</summary>
-    public interface IBooksService
+    public interface IBooksRepository
     {
         /// <summary>Gets books.</summary>
         /// <returns>

@@ -47,7 +47,7 @@ namespace AspNetSandBox
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 c.IncludeXmlComments(xmlPath, includeControllerXmlComments: true);
             });
-            services.AddSingleton<IBooksService, BooksService>();
+            services.AddSingleton<IBooksRepository, BooksInMemoryRepository>();
 
             // services.AddScoped<IBooksService, BooksService>();
             // services.AddTransient<IBooksService, BooksService>(); - reinstantiate service each time
