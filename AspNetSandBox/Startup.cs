@@ -30,9 +30,9 @@ namespace AspNetSandBox
             services.AddDbContext<ApplicationDbContext>(options =>
 
                 // SqlServerDbContextOptionsExtensions.UseSqlServer(options, Configuration.GetConnectionString("SqlConnection"))
-                // options.UseSqlServer(
-                // Configuration.GetConnectionString("DefaultConnection")));
-                options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlServer(
+                Configuration.GetConnectionString("DefaultConnection")));
+                //options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
             services.AddDatabaseDeveloperPageExceptionFilter();
 
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
@@ -48,7 +48,7 @@ namespace AspNetSandBox
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 c.IncludeXmlComments(xmlPath, includeControllerXmlComments: true);
             });
-            services.AddSingleton<IBooksRepository, BooksInMemoryRepository>();
+            services.AddScoped<IBooksRepository, DbBooksRepository>();
 
             // services.AddScoped<IBooksService, BooksService>();
             // services.AddTransient<IBooksService, BooksService>(); - reinstantiate service each time

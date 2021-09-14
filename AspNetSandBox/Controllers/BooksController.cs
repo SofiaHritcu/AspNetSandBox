@@ -1,5 +1,6 @@
 ﻿using AspNetSandBox.Data;
 using AspNetSandBox.Models;
+using AspNetSandBox.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -15,13 +16,13 @@ namespace AspNetSandBox.Controllers
     [ApiController]
     public class BooksController : ControllerBase
     {
-        private readonly ApplicationDbContext _context;
+        private readonly IBooksRepository dbBooksRepository;
 
         /// <summary>Initializes a new instance of the <see cref="BooksController" /> class.</summary>
         /// <param name="context">ApplicationDbContext.</param>
-        public BooksController(ApplicationDbContext context)
+        public BooksController(IBooksRepository dbBooksRepository)
         {
-            _context = context;
+            this.dbBooksRepository = dbBooksRepository;
         }
 
         // GET: api/<ValuesController>
@@ -31,7 +32,7 @@ namespace AspNetSandBox.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            return Ok(await _context.Book.ToListAsync());
+            return Ok(dbBooksRepository.Get());
         }
 
         // GET api/<ValuesController>/5
@@ -44,9 +45,7 @@ namespace AspNetSandBox.Controllers
         {
             try
             {
-                var book = await _context.Book
-                .FirstOrDefaultAsync(m => m.Id == id);
-                return Ok(book);
+                return Ok(dbBooksRepository.Get(id));
             }
             catch (Exception)
             {
@@ -64,8 +63,7 @@ namespace AspNetSandBox.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(book);
-                await _context.SaveChangesAsync();
+                dbBooksRepository.Add(book);
                 return Ok();
             }
             else
@@ -83,8 +81,7 @@ namespace AspNetSandBox.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> Put(int id, [FromBody] Book book)
         {
-            _context.Update(book);
-            await _context.SaveChangesAsync();
+            dbBooksRepository.Update(id, book);
             return Ok();
         }
 
@@ -96,9 +93,7 @@ namespace AspNetSandBox.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            var book = await _context.Book.FindAsync(id);
-            _context.Book.Remove(book);
-            await _context.SaveChangesAsync();
+            dbBooksRepository.Delete(id);
             return Ok();
         }
     }
