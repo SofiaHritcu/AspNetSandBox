@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace AspNetSandBox
+namespace AspNetSandBox.Services
 {
     /// <summary>CRUD opertaions implementations for books.</summary>
     public class BooksInMemoryRepository : IBooksRepository
