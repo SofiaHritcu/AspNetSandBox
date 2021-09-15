@@ -1,8 +1,36 @@
 @page
-@model PrivacyModel
-@{
-    ViewData["Title"] = "Chat";
-}
-<h1>@ViewData["Title"]</h1>
-
-<p>Here will be the chat.</p>
+@*@model IList<Message>*@
+<div class="container">
+    <div class="row">&nbsp;</div>
+    <div class="row">
+        <div class="col-2">User</div>
+        <div class="col-4"><input type="text" id="userInput" style="border: 1px solid; border-radius: 2px;"/></div>
+    </div>
+    <div class="row">
+        <div class="col-2">Message</div>
+        <div class="col-4"><input type="text" id="messageInput" style="border: 1px solid; border-radius: 2px;"/></div>
+    </div>
+    <div class="row">&nbsp;</div>
+    <div class="row">
+        <div class="col-6">
+            <input type="button" id="sendButton" value="Send Message" style="border: 1px solid;"/>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <hr />
+    </div>
+</div>
+@*<div class="row">
+        <div class="col-6">
+            <ul id="messagesList">
+                @for (var i = 0; i < Model.Count; i++)
+                        {
+                            var message = Model[i];
+                            <li>
+                                @message.User says @message.MessageContent
+                            </li>}
+            </ul>
+        </div>
+    </div>*@
