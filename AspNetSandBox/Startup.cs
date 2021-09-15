@@ -50,7 +50,7 @@ namespace AspNetSandBox
             });
             services.AddScoped<IBooksRepository, DbBooksRepository>();
             services.AddSignalR();
-
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             // services.AddScoped<IBooksService, BooksService>();
             // services.AddTransient<IBooksService, BooksService>(); - reinstantiate service each time
         }
