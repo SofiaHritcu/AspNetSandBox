@@ -35,8 +35,8 @@ namespace AspNetSandBox
                 //options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
             services.AddDatabaseDeveloperPageExceptionFilter();
 
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+            //services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            //    .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddRazorPages();
             services.AddControllers();
             services.AddSwaggerGen(c =>
@@ -49,6 +49,7 @@ namespace AspNetSandBox
                 c.IncludeXmlComments(xmlPath, includeControllerXmlComments: true);
             });
             services.AddScoped<IBooksRepository, DbBooksRepository>();
+            services.AddSignalR();
 
             // services.AddScoped<IBooksService, BooksService>();
             // services.AddTransient<IBooksService, BooksService>(); - reinstantiate service each time
@@ -94,7 +95,9 @@ namespace AspNetSandBox
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
                 endpoints.MapControllers();
-            });
+                endpoints.MapHub<MessageHub>("/messagehub");
+        });
         }
     }
+
 }
