@@ -4,6 +4,7 @@ function addBookInstanceToTable(book) {
     const table = document.getElementById('books');
     const bookTableRow = document.createElement('tr');
     bookTableRow.setAttribute('data-id', book.id);
+    bookTableRow.setAttribute('id', `book${book.id}`);
 
     // title column
     const titleColumn = document.createElement('td');

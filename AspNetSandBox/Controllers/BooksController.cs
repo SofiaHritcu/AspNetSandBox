@@ -1,6 +1,8 @@
 ﻿using AspNetSandBox.Data;
+using AspNetSandBox.DTOs;
 using AspNetSandBox.Models;
 using AspNetSandBox.Services;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
@@ -19,13 +21,15 @@ namespace AspNetSandBox.Controllers
     {
         private readonly IBooksRepository dbBooksRepository;
         private readonly IHubContext<MessageHub> hubContext;
+        private readonly IMapper mapper;
 
         /// <summary>Initializes a new instance of the <see cref="BooksController" /> class.</summary>
         /// <param name="context">ApplicationDbContext.</param>
-        public BooksController(IBooksRepository dbBooksRepository, IHubContext<MessageHub> hubContext)
+        public BooksController(IBooksRepository dbBooksRepository, IHubContext<MessageHub> hubContext, IMapper mapper)
         {
             this.dbBooksRepository = dbBooksRepository;
             this.hubContext = hubContext;
+            this.mapper = mapper;
         }
 
         // GET: api/<ValuesController>
@@ -59,13 +63,14 @@ namespace AspNetSandBox.Controllers
         // POST api/<ValuesController>
 
         /// <summary>Posts the specified book.</summary>
-        /// <param name="book">The value.</param>
+        /// <param name="bookDto">The value.</param>
         /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] Book book)
         {
             if (ModelState.IsValid)
             {
+                // Book book = mapper.Map<Book>(bookDto);
                 dbBooksRepository.Add(book);
                 hubContext.Clients.All.SendAsync("BookCreated", book);
                 return Ok();
@@ -86,6 +91,7 @@ namespace AspNetSandBox.Controllers
         public async Task<IActionResult> Put(int id, [FromBody] Book book)
         {
             dbBooksRepository.Update(id, book);
+            hubContext.Clients.All.SendAsync("BookUpdated", book);
             return Ok();
         }
 
@@ -98,6 +104,7 @@ namespace AspNetSandBox.Controllers
         public async Task<IActionResult> Delete(int id)
         {
             dbBooksRepository.Delete(id);
+            hubContext.Clients.All.SendAsync("BookDeleted", id);
             return Ok();
         }
     }
