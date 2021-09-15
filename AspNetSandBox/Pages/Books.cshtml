@@ -1,0 +1,147 @@
+﻿@page
+@*@model AspNetSandBox.Pages.BooksModel*@
+@*@{
+}*@
+<div class="container-fluid">
+    <row justify="center" align="center" id="headerRow">
+        <h1 class="my-5 text-uppercase font-weight-light">Books</h1>
+
+        <!-- Add Book Button -->
+        <button type="button"
+                class="btn btn-outline-dark btn-lg mx-5 my-3"
+                id="addBook"
+                data-toggle="modal" data-target="#addBookModal">
+            Add Book
+        </button>
+
+        <!-- Add Book Modal -->
+        <div class="modal fade" id="addBookModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Add Book</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="closeModal">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="addBookForm">
+                            <div class="form-group">
+                                <label for="titleInput">Title</label>
+                                <input type="text" class="form-control" id="titleInput" placeholder="Enter book's title.">
+                            </div>
+                            <div class="form-group">
+                                <label for="authorInput">Author</label>
+                                <input type="text" class="form-control" id="authorInput" placeholder="Enter book's author.">
+                            </div>
+                            <div class="form-group">
+                                <label for="languageInput">Language</label>
+                                <input type="text" class="form-control" id="languageInput" placeholder="Enter book's language.">
+                            </div>
+                            <button type="submit" class="btn btn-outline-dark">Add</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Get Book Modal -->
+        <div class="modal fade" id="getBookModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">View Book</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="closeModalDetails">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="getBookForm">
+                            <div class="form-group">
+                                <label for="titleInputGet">Title</label>
+                                <input type="text" class="form-control" id="titleInputGet" disabled="disabled">
+                            </div>
+                            <div class="form-group">
+                                <label for="authorInputGet">Author</label>
+                                <input type="text" class="form-control" id="authorInputGet" disabled="disabled">
+                            </div>
+                            <div class="form-group">
+                                <label for="languageInputGet">Language</label>
+                                <input type="text" class="form-control" id="languageInputGet" disabled="disabled">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Update Book Modal -->
+        <div class="modal fade" id="updateBookModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Update Book</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="closeModalUpdate">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="updateBookForm">
+                            <div class="form-group">
+                                <label for="titleInputUpdate">Title</label>
+                                <input type="text" class="form-control" id="titleInputUpdate">
+                            </div>
+                            <div class="form-group">
+                                <label for="authorInputUpdate">Author</label>
+                                <input type="text" class="form-control" id="authorInputUpdate">
+                            </div>
+                            <div class="form-group">
+                                <label for="languageInputUpdate">Language</label>
+                                <input type="text" class="form-control" id="languageInputUpdate">
+                            </div>
+                            <button type="submit" class="btn btn-outline-dark">Update</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </row>
+    <row justify="center" align="center">
+        <table class="table table-hover" id="booksTable">
+            <thead>
+                <tr>
+                    <th scope="col">
+                        Title
+                    </th>
+                    <th scope="col">
+                        Author
+                    </th>
+                    <th scope="col">
+                        Language
+                    </th>
+                    <th scope="col" class="text-center">
+                        Actions
+                    </th>
+                </tr>
+            </thead>
+            <tbody id="books">
+            </tbody>
+        </table>
+        <div class="d-flex justify-content-center">
+            <div class="spinner-grow" role="status" id="loading">
+                <span class="visually-hidden"></span>
+            </div>
+        </div>
+    </row>
+    @section scripts {
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script src="~/lib/microsoft-signalr/signalr.js"></script>
+        <script src="js/get-books.js"></script>
+        <script src="js/add-book.js"></script>
+        <script src="js/delete-book.js"></script>
+        <script src="js/details-book.js"></script>
+        <script src="js/edit-book.js"></script>
+    }

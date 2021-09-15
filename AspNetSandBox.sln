@@ -13,7 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.github\workflows\dotnet.yml = .github\workflows\dotnet.yml
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBSandBox", "DBSandBox\DBSandBox.csproj", "{F892A457-9E77-4F24-9647-3F47E22DDCE8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DBSandBox", "DBSandBox\DBSandBox.csproj", "{F892A457-9E77-4F24-9647-3F47E22DDCE8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
