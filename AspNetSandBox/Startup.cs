@@ -28,15 +28,8 @@ namespace AspNetSandBox
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(options =>
-
-                // SqlServerDbContextOptionsExtensions.UseSqlServer(options, Configuration.GetConnectionString("SqlConnection"))
-                // options.UseSqlServer(
-                // Configuration.GetConnectionString("DefaultConnection")));
                 options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
             services.AddDatabaseDeveloperPageExceptionFilter();
-
-            // services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-            //    .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddRazorPages();
             services.AddControllers();
             services.AddSwaggerGen(c =>
@@ -51,9 +44,6 @@ namespace AspNetSandBox
             services.AddScoped<IBooksRepository, DbBooksRepository>();
             services.AddSignalR();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-
-            // services.AddScoped<IBooksService, BooksService>();
-            // services.AddTransient<IBooksService, BooksService>(); - reinstantiate service each time
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -76,7 +66,6 @@ namespace AspNetSandBox
 
             app.UseHttpsRedirection();
 
-            // app.UseDefaultFiles();
             DefaultFilesOptions defaultFilesOptions = new DefaultFilesOptions();
             defaultFilesOptions.DefaultFileNames = new List<string>();
             defaultFilesOptions.DefaultFileNames.Add("Index.html");

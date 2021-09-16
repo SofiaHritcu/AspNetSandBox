@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AspNetSandBox
+namespace AspNetSandBox.Models
 {
     /// <summary>
     ///   <para>City Coordinates class.<br /></para>

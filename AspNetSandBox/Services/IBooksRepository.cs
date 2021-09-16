@@ -1,7 +1,7 @@
 ﻿using AspNetSandBox.Models;
 using System.Collections.Generic;
 
-namespace AspNetSandBox
+namespace AspNetSandBox.Services
 {
     /// <summary>Interface for CRUD operations on books.</summary>
     public interface IBooksRepository

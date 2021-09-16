@@ -1,6 +1,6 @@
 using System;
 
-namespace AspNetSandBox
+namespace AspNetSandBox.Models
 {
     /// <summary>
     ///   <para>Weather Forecast Controller class.</para>
