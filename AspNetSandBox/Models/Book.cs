@@ -18,5 +18,7 @@
         /// <summary>Gets or sets the language.</summary>
         /// <value>The language.</value>
         public string Language { get; set; }
+
+        public decimal PurchasePrice { get; set; }
     }
 }
