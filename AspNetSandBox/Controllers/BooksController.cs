@@ -24,7 +24,11 @@ namespace AspNetSandBox.Controllers
         private readonly IMapper mapper;
 
         /// <summary>Initializes a new instance of the <see cref="BooksController" /> class.</summary>
-        /// <param name="context">ApplicationDbContext.</param>
+        /// <param name="dbBooksRepository">Db Books Repository.</param>
+        /// <param name="hubContext">Hub Context.</param>
+        /// <param name="mapper">
+        ///   <para>The mapper.</para>
+        /// </param>
         public BooksController(IBooksRepository dbBooksRepository, IHubContext<MessageHub> hubContext, IMapper mapper)
         {
             this.dbBooksRepository = dbBooksRepository;
@@ -39,7 +43,9 @@ namespace AspNetSandBox.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            return Ok(dbBooksRepository.Get());
+            IEnumerable<Book> books = dbBooksRepository.Get();
+            IEnumerable<ReadBookDto> readBookDtos = mapper.Map<IEnumerable<Book>, IEnumerable<ReadBookDto>>(books);
+            return Ok(readBookDtos);
         }
 
         // GET api/<ValuesController>/5
@@ -65,13 +71,16 @@ namespace AspNetSandBox.Controllers
         // POST api/<ValuesController>
 
         /// <summary>Posts the specified book.</summary>
-        /// <param name="bookDto">The value.</param>
-        /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
+        /// <param name="createBookDto">
+        ///   <para>The book to be added.</para>
+        /// </param>
+        /// <returns>A <see cref="Task" /> representing the asynchronous operation.</returns>
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] Book book)
+        public async Task<IActionResult> Post([FromBody] CreateBookDto createBookDto)
         {
             if (ModelState.IsValid)
             {
+                Book book = mapper.Map<Book>(createBookDto);
                 dbBooksRepository.Add(book);
                 hubContext.Clients.All.SendAsync("BookCreated", book);
                 return Ok();
@@ -86,12 +95,11 @@ namespace AspNetSandBox.Controllers
 
         /// <summary>Updates the book at the specified id with the fields of value.</summary>
         /// <param name="id">The identifier.</param>
-        /// <param name="book">The value.</param>
+        /// <param name="book"> The book to be updated.</param>
         /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(int id, [FromBody] CreateBookDto bookDto)
+        public async Task<IActionResult> Put(int id, [FromBody] Book book)
         {
-            Book book = mapper.Map<Book>(bookDto);
             dbBooksRepository.Update(id, book);
             hubContext.Clients.All.SendAsync("BookUpdated", book);
             return Ok();
