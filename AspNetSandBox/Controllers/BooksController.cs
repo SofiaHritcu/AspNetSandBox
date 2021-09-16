@@ -52,7 +52,9 @@ namespace AspNetSandBox.Controllers
         {
             try
             {
-                return Ok(dbBooksRepository.Get(id));
+                Book book = dbBooksRepository.Get(id);
+                ReadBookDto readBookDto = mapper.Map<ReadBookDto>(book);
+                return Ok(readBookDto);
             }
             catch (Exception)
             {
@@ -66,11 +68,10 @@ namespace AspNetSandBox.Controllers
         /// <param name="bookDto">The value.</param>
         /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] CreateBookDto bookDto)
+        public async Task<IActionResult> Post([FromBody] Book book)
         {
             if (ModelState.IsValid)
             {
-                Book book = mapper.Map<Book>(bookDto);
                 dbBooksRepository.Add(book);
                 hubContext.Clients.All.SendAsync("BookCreated", book);
                 return Ok();
