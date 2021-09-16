@@ -30,12 +30,12 @@ namespace AspNetSandBox
             services.AddDbContext<ApplicationDbContext>(options =>
 
                 // SqlServerDbContextOptionsExtensions.UseSqlServer(options, Configuration.GetConnectionString("SqlConnection"))
-                options.UseSqlServer(
-                Configuration.GetConnectionString("DefaultConnection")));
-                //options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
+                // options.UseSqlServer(
+                // Configuration.GetConnectionString("DefaultConnection")));
+                options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
             services.AddDatabaseDeveloperPageExceptionFilter();
 
-            //services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            // services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
             //    .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddRazorPages();
             services.AddControllers();
