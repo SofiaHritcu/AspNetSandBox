@@ -13,11 +13,6 @@ namespace AspNetSandBox
     {
         public static void Main(string[] args)
         {
-            // camel casing -> webBuilder used f=for variables
-            // var program = new Program();
-            // Program program1 = new Program();
-            // int i = 1;
-            // pascal casing -> CreateHostBuilder
             CreateHostBuilder(args).Build().Run();
         }
 

@@ -33,7 +33,6 @@ namespace AspNetSandBox.Controllers
         {
             // form url with given parameters
             string url = "https://api.openweathermap.org/data/2.5/onecall?lat=" + latitude.ToString() + "&lon=" + longitude.ToString() + "&exclude=hourly,minutely&units=metric&appid=" + keyAPI.ToString();
-            Console.WriteLine(url);
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
 
             // set method for http request
