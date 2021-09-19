@@ -108,8 +108,6 @@ namespace AspNetSandBox.Controllers
             return Ok();
         }
 
-
-
         // DELETE api/<ValuesController>/5
 
         /// <summary>Deletes the book found at the specified identifier.</summary>
