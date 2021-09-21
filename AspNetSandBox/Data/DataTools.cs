@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using AspNetSandBox.Models;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -21,6 +22,19 @@ namespace AspNetSandBox.Data
                 else
                 {
                     Console.WriteLine("There are no books !");
+                    applicationDbContext.Add(new Book
+                    {
+                        Title = "War and Peace",
+                        Author = "Lev Tolstoi",
+                        Language = "English",
+                    });
+                    applicationDbContext.Add(new Book
+                    {
+                        Title = "Crime and Punishment",
+                        Author = "Feodor Dostoievski",
+                        Language = "English",
+                    });
+                    applicationDbContext.SaveChanges();
                 }
             }
         }

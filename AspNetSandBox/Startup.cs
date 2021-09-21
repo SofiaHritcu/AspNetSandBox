@@ -26,6 +26,18 @@ namespace AspNetSandBox
 
         public IConfiguration Configuration { get; }
 
+        public static string ConvertConnectionString(string connectionString)
+        {
+            Uri databaseUri = new Uri(connectionString);
+            string userId = databaseUri.UserInfo.Split(':')[0];
+            string password = databaseUri.UserInfo.Split(':')[1];
+            string dataBase = databaseUri.AbsolutePath.TrimStart('/');
+            string host = databaseUri.Host;
+            int port = databaseUri.Port;
+
+            return $"Database={dataBase};Host={host};Port={port};User Id={userId};Password={password}; SSL Mode=Require; Trust Server Certificate=true";
+        }
+
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
@@ -47,29 +59,6 @@ namespace AspNetSandBox
             services.AddScoped<IBooksRepository, DbBooksRepository>();
             services.AddSignalR();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-        }
-
-        private string GetConnectionString()
-        {
-            var connectionString = Environment.GetEnvironmentVariable("DATABASE_URL");
-            if (connectionString != null)
-            {
-                return ConvertConnectionString(connectionString);
-            }
-
-            return Configuration.GetConnectionString("DefaultConnection");
-        }
-
-        public static string ConvertConnectionString(string connectionString)
-        { 
-            Uri databaseUri = new Uri(connectionString);
-            string userId = databaseUri.UserInfo.Split(':')[0];
-            string password = databaseUri.UserInfo.Split(':')[1];
-            string dataBase = databaseUri.AbsolutePath.TrimStart('/');
-            string host = databaseUri.Host;
-            int port = databaseUri.Port;
-
-            return $"Database={dataBase};Host={host};Port={port};User Id={userId};Password={password}; SSL Mode=Require; Trust Server Certificate=true";
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -115,6 +104,17 @@ namespace AspNetSandBox
                 endpoints.MapControllers();
                 endpoints.MapHub<MessageHub>("/messagehub");
         });
+        }
+
+        private string GetConnectionString()
+        {
+            var connectionString = Environment.GetEnvironmentVariable("DATABASE_URL");
+            if (connectionString != null)
+            {
+                return ConvertConnectionString(connectionString);
+            }
+
+            return Configuration.GetConnectionString("DefaultConnection");
         }
     }
 }
