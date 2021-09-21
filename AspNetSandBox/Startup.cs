@@ -90,7 +90,7 @@ namespace AspNetSandBox
                 app.UseHsts();
             }
 
-            DataTools.SeedData(app);
+            app.SeedData();
 
             app.UseHttpsRedirection();
 
