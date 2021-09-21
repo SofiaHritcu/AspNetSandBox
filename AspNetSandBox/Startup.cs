@@ -90,18 +90,7 @@ namespace AspNetSandBox
                 app.UseHsts();
             }
 
-            using (var serviceScope = app.ApplicationServices.CreateScope())
-            {
-                var applicationDbContext = serviceScope.ServiceProvider.GetService<ApplicationDbContext>();
-                if (applicationDbContext.Book.Any())
-                {
-                    Console.WriteLine("The books are there !");
-                }
-                else
-                {
-                    Console.WriteLine("There are no books !");
-                }
-            }
+            DataTools.SeedData(app);
 
             app.UseHttpsRedirection();
 
