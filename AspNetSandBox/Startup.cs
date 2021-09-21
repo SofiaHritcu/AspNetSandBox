@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using AspNetSandBox.Data;
 using AspNetSandBox.Services;
@@ -31,7 +32,6 @@ namespace AspNetSandBox
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseNpgsql(GetConnectionString()));
 
-            //
             services.AddDatabaseDeveloperPageExceptionFilter();
             services.AddRazorPages();
             services.AddControllers();
@@ -88,6 +88,19 @@ namespace AspNetSandBox
 
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
+            }
+
+            using (var serviceScope = app.ApplicationServices.CreateScope())
+            {
+                var applicationDbContext = serviceScope.ServiceProvider.GetService<ApplicationDbContext>();
+                if (applicationDbContext.Book.Any())
+                {
+                    Console.WriteLine("The books are there !");
+                }
+                else
+                {
+                    Console.WriteLine("There are no books !");
+                }
             }
 
             app.UseHttpsRedirection();
