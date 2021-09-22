@@ -13,6 +13,8 @@ namespace AspNetSandBox.Migrations
     [Migration("20210916064140_Initial_Migrations")]
     partial class Initial_Migrations
     {
+        /// <summary>Implemented to build the <see cref="P:Microsoft.EntityFrameworkCore.Migrations.Migration.TargetModel">TargetModel</see>.</summary>
+        /// <param name="modelBuilder">The <see cref="T:Microsoft.EntityFrameworkCore.ModelBuilder">ModelBuilder</see> to use to build the model.</param>
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618

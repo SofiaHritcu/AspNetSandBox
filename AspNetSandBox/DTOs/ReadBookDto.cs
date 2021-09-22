@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 
 namespace AspNetSandBox.DTOs
 {
+    /// <summary>ReadBookDto .</summary>
     public class ReadBookDto
     {
         /// <summary>Gets or sets the identifier.</summary>

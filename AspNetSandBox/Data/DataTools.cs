@@ -1,15 +1,18 @@
-﻿using AspNetSandBox.Models;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AspNetSandBox.Models;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace AspNetSandBox.Data
 {
+    /// <summary>Data Tools.</summary>
     public static class DataTools
     {
+        /// <summary>Seeds the data.</summary>
+        /// <param name="app">The application.</param>
         public static void SeedData(this IApplicationBuilder app)
         {
             using (var serviceScope = app.ApplicationServices.CreateScope())

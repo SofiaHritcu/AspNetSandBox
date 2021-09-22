@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 
 namespace AspNetSandBox.DTOs
 {
+    /// <summary>CreateBookDto .</summary>
     public class CreateBookDto
     {
         /// <summary>Gets or sets the title.</summary>

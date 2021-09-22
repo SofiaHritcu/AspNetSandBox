@@ -4,8 +4,22 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace AspNetSandBox.Migrations
 {
+    /// <summary>Initial_Migrations.</summary>
     public partial class Initial_Migrations : Migration
     {
+        /// <summary>
+        ///   <para>
+        /// Builds the operations that will migrate the database 'up'.
+        /// </para>
+        ///   <para>
+        /// That is, builds the operations that will take the database from the state left in by the
+        /// previous migration so that it is up-to-date with regard to this migration.
+        /// </para>
+        ///   <para>
+        /// This method must be overridden in each class the inherits from <see cref="T:Microsoft.EntityFrameworkCore.Migrations.Migration">Migration</see>.
+        /// </para>
+        /// </summary>
+        /// <param name="migrationBuilder">The <see cref="T:Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder">MigrationBuilder</see> that will build the operations.</param>
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
@@ -15,7 +29,7 @@ namespace AspNetSandBox.Migrations
                     Id = table.Column<string>(type: "text", nullable: false),
                     Name = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
                     NormalizedName = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
-                    ConcurrencyStamp = table.Column<string>(type: "text", nullable: true)
+                    ConcurrencyStamp = table.Column<string>(type: "text", nullable: true),
                 },
                 constraints: table =>
                 {
@@ -40,7 +54,7 @@ namespace AspNetSandBox.Migrations
                     TwoFactorEnabled = table.Column<bool>(type: "boolean", nullable: false),
                     LockoutEnd = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true),
                     LockoutEnabled = table.Column<bool>(type: "boolean", nullable: false),
-                    AccessFailedCount = table.Column<int>(type: "integer", nullable: false)
+                    AccessFailedCount = table.Column<int>(type: "integer", nullable: false),
                 },
                 constraints: table =>
                 {
@@ -55,7 +69,7 @@ namespace AspNetSandBox.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Title = table.Column<string>(type: "text", nullable: true),
                     Author = table.Column<string>(type: "text", nullable: true),
-                    Language = table.Column<string>(type: "text", nullable: true)
+                    Language = table.Column<string>(type: "text", nullable: true),
                 },
                 constraints: table =>
                 {
@@ -70,7 +84,7 @@ namespace AspNetSandBox.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     RoleId = table.Column<string>(type: "text", nullable: false),
                     ClaimType = table.Column<string>(type: "text", nullable: true),
-                    ClaimValue = table.Column<string>(type: "text", nullable: true)
+                    ClaimValue = table.Column<string>(type: "text", nullable: true),
                 },
                 constraints: table =>
                 {
@@ -91,7 +105,7 @@ namespace AspNetSandBox.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     UserId = table.Column<string>(type: "text", nullable: false),
                     ClaimType = table.Column<string>(type: "text", nullable: true),
-                    ClaimValue = table.Column<string>(type: "text", nullable: true)
+                    ClaimValue = table.Column<string>(type: "text", nullable: true),
                 },
                 constraints: table =>
                 {
@@ -111,7 +125,7 @@ namespace AspNetSandBox.Migrations
                     LoginProvider = table.Column<string>(type: "text", nullable: false),
                     ProviderKey = table.Column<string>(type: "text", nullable: false),
                     ProviderDisplayName = table.Column<string>(type: "text", nullable: true),
-                    UserId = table.Column<string>(type: "text", nullable: false)
+                    UserId = table.Column<string>(type: "text", nullable: false),
                 },
                 constraints: table =>
                 {
@@ -129,7 +143,7 @@ namespace AspNetSandBox.Migrations
                 columns: table => new
                 {
                     UserId = table.Column<string>(type: "text", nullable: false),
-                    RoleId = table.Column<string>(type: "text", nullable: false)
+                    RoleId = table.Column<string>(type: "text", nullable: false),
                 },
                 constraints: table =>
                 {
@@ -155,7 +169,7 @@ namespace AspNetSandBox.Migrations
                     UserId = table.Column<string>(type: "text", nullable: false),
                     LoginProvider = table.Column<string>(type: "text", nullable: false),
                     Name = table.Column<string>(type: "text", nullable: false),
-                    Value = table.Column<string>(type: "text", nullable: true)
+                    Value = table.Column<string>(type: "text", nullable: true),
                 },
                 constraints: table =>
                 {
@@ -206,6 +220,21 @@ namespace AspNetSandBox.Migrations
                 unique: true);
         }
 
+        /// <summary>
+        ///   <para>
+        /// Builds the operations that will migrate the database 'down'.
+        /// </para>
+        ///   <para>
+        /// That is, builds the operations that will take the database from the state left in by
+        /// this migration so that it returns to the state that it was in before this migration was applied.
+        /// </para>
+        ///   <para>
+        /// This method must be overridden in each class the inherits from <see cref="T:Microsoft.EntityFrameworkCore.Migrations.Migration">Migration</see> if
+        /// both 'up' and 'down' migrations are to be supported. If it is not overridden, then calling it
+        /// will throw and it will not be possible to migrate in the 'down' direction.
+        /// </para>
+        /// </summary>
+        /// <param name="migrationBuilder">The <see cref="T:Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder">MigrationBuilder</see> that will build the operations.</param>
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(

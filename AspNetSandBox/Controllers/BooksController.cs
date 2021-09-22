@@ -1,4 +1,7 @@
-﻿using AspNetSandBox.Data;
+﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using AspNetSandBox.Data;
 using AspNetSandBox.DTOs;
 using AspNetSandBox.Models;
 using AspNetSandBox.Services;
@@ -6,9 +9,6 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 namespace AspNetSandBox.Controllers
@@ -41,7 +41,7 @@ namespace AspNetSandBox.Controllers
         /// <summary>Gets all the instances of books.</summary>
         /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
         [HttpGet]
-        public async Task<IActionResult> Get()
+        public IActionResult Get()
         {
             var books = dbBooksRepository.Get();
             var readBookDtos = mapper.Map<IEnumerable<Book>, IEnumerable<ReadBookDto>>(books);
@@ -54,7 +54,7 @@ namespace AspNetSandBox.Controllers
         /// <param name="id">The identifier.</param>
         /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
         [HttpGet("{id}")]
-        public async Task<IActionResult> Get(int id)
+        public IActionResult Get(int id)
         {
             try
             {
@@ -76,7 +76,7 @@ namespace AspNetSandBox.Controllers
         /// </param>
         /// <returns>A <see cref="Task" /> representing the asynchronous operation.</returns>
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] CreateBookDto createBookDto)
+        public IActionResult Post([FromBody] CreateBookDto createBookDto)
         {
             if (ModelState.IsValid)
             {
@@ -98,7 +98,7 @@ namespace AspNetSandBox.Controllers
         /// <param name="book"> The book to be updated.</param>
         /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(int id, [FromBody] Book book)
+        public IActionResult Put(int id, [FromBody] Book book)
         {
             dbBooksRepository.Update(id, book);
             hubContext.Clients.All.SendAsync("BookUpdated", book);
@@ -111,7 +111,7 @@ namespace AspNetSandBox.Controllers
         /// <param name="id">The identifier.</param>
         /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        public IActionResult Delete(int id)
         {
             dbBooksRepository.Delete(id);
             hubContext.Clients.All.SendAsync("BookDeleted", id);

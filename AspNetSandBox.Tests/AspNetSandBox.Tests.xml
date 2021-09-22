@@ -4,5 +4,78 @@
         <name>AspNetSandBox.Tests</name>
     </assembly>
     <members>
+        <member name="T:AspNetSandBox.Tests.BooksInMemoryRepositoryTests">
+            <summary>BooksInMemoDryRepositoryTests Class.</summary>
+        </member>
+        <member name="M:AspNetSandBox.Tests.BooksInMemoryRepositoryTests.ShouldGetBookValidId">
+            <summary>Shoulds the get book valid identifier.</summary>
+        </member>
+        <member name="M:AspNetSandBox.Tests.BooksInMemoryRepositoryTests.ShouldNotGetBookInvalidId">
+            <summary>Shoulds the not get book invalid identifier.</summary>
+        </member>
+        <member name="M:AspNetSandBox.Tests.BooksInMemoryRepositoryTests.ShouldAddValidBook">
+            <summary>Shoulds the add valid book.</summary>
+        </member>
+        <member name="M:AspNetSandBox.Tests.BooksInMemoryRepositoryTests.ShouldNotAddInvalidBook">
+            <summary>Shoulds the not add invalid book.</summary>
+        </member>
+        <member name="M:AspNetSandBox.Tests.BooksInMemoryRepositoryTests.ShouldNotAddNullBook">
+            <summary>Shoulds the not add null book.</summary>
+        </member>
+        <member name="M:AspNetSandBox.Tests.BooksInMemoryRepositoryTests.ShouldAddBooksWithUniqueIds">
+            <summary>Shoulds the add books with unique ids.</summary>
+        </member>
+        <member name="M:AspNetSandBox.Tests.BooksInMemoryRepositoryTests.ShouldUpdateValidBook">
+            <summary>Shoulds the update valid book.</summary>
+        </member>
+        <member name="M:AspNetSandBox.Tests.BooksInMemoryRepositoryTests.ShouldNotUpdateInvalidBook">
+            <summary>Shoulds the not update invalid book.</summary>
+        </member>
+        <member name="M:AspNetSandBox.Tests.BooksInMemoryRepositoryTests.ShouldNotUpdateBookWithInvalidValue">
+            <summary>Shoulds the not update book with invalid value.</summary>
+        </member>
+        <member name="M:AspNetSandBox.Tests.BooksInMemoryRepositoryTests.ShouldDeleteValidBook">
+            <summary>Shoulds the delete valid book.</summary>
+        </member>
+        <member name="M:AspNetSandBox.Tests.BooksInMemoryRepositoryTests.ShouldNotDeleteInvalidBook">
+            <summary>Shoulds the not delete invalid book.</summary>
+        </member>
+        <member name="T:AspNetSandBox.Tests.CityCoordinatesControllerTest">
+            <summary>CityCoordinatesControllerTest Class.</summary>
+        </member>
+        <member name="M:AspNetSandBox.Tests.CityCoordinatesControllerTest.ShouldConvertResponseToBucharestCoordinates">
+            <summary>Shoulds the convert response to bucharest coordinates.</summary>
+        </member>
+        <member name="M:AspNetSandBox.Tests.CityCoordinatesControllerTest.ShouldConvertResponseToAtheneCoordinates">
+            <summary>Shoulds the convert response to athene coordinates.</summary>
+        </member>
+        <member name="M:AspNetSandBox.Tests.CityCoordinatesControllerTest.ShouldConvertResponseToChicagoCoordinates">
+            <summary>Shoulds the convert response to chicago coordinates.</summary>
+        </member>
+        <member name="T:AspNetSandBox.Tests.LoadJson">
+            <summary>LoadJson Class.</summary>
+        </member>
+        <member name="M:AspNetSandBox.Tests.LoadJson.LoadJsonFromResource(System.String)">
+            <summary>Loads the json from resource.</summary>
+            <param name="filename">The filename.</param>
+            <returns>
+              <br />
+            </returns>
+        </member>
+        <member name="T:AspNetSandBox.Tests.StartupTests">
+            <summary>StartupTests Class.</summary>
+        </member>
+        <member name="M:AspNetSandBox.Tests.StartupTests.CheckConversionToEFConnectionString">
+            <summary>Checks the conversion to ef connection string.</summary>
+        </member>
+        <member name="T:AspNetSandBox.Tests.WeatherForecastControllerTest">
+            <summary>WeatherForecastControllerTest Class.</summary>
+        </member>
+        <member name="M:AspNetSandBox.Tests.WeatherForecastControllerTest.ShouldConvertResponseToWeatherForecast">
+            <summary>Shoulds the convert response to weather forecast.</summary>
+        </member>
+        <member name="M:AspNetSandBox.Tests.WeatherForecastControllerTest.ShouldConvertResponseToWeatherForecastAfterTomorrow">
+            <summary>Shoulds the convert response to weather forecast after tomorrow.</summary>
+        </member>
     </members>
 </doc>

@@ -9,38 +9,5 @@ dotnet_diagnostic.SA1101.severity = none
 # SA1200: Using directives should be placed correctly
 dotnet_diagnostic.SA1200.severity = none
 
-# SA1208: System using directives should be placed before other using directives
-dotnet_diagnostic.SA1208.severity = none
-
 # SA1633: File should have header
 dotnet_diagnostic.SA1633.severity = none
-
-# SA1404: Code analysis suppression should have justification
-dotnet_diagnostic.SA1404.severity = none
-
-# CS1591: Missing XML comment for publicly visible type or member
-dotnet_diagnostic.CS1591.severity = none
-
-# SA1600: Elements should be documented
-dotnet_diagnostic.SA1600.severity = none
-
-# SA1309: Field names should not begin with underscore
-dotnet_diagnostic.SA1309.severity = none
-
-# CS1998: Async method lacks 'await' operators and will run synchronously
-dotnet_diagnostic.CS1998.severity = none
-
-# CS4014: Because this call is not awaited, execution of the current method continues before the call is completed
-dotnet_diagnostic.CS4014.severity = none
-
-# SA1649: File name should match first type name
-dotnet_diagnostic.SA1649.severity = none
-
-# SA1601: Partial elements should be documented
-dotnet_diagnostic.SA1601.severity = none
-
-# IDE0058: Expression value is never used
-dotnet_diagnostic.IDE0058.severity = none
-
-# SA1413: Use trailing comma in multi-line initializers
-dotnet_diagnostic.SA1413.severity = none

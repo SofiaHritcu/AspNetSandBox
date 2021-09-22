@@ -13,6 +13,7 @@ namespace AspNetSandBox.Migrations
     [Migration("20210916091617_AddPurchasePrice")]
     partial class AddPurchasePrice
     {
+        /// <inheritdoc/>
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618

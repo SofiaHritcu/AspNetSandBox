@@ -8,8 +8,14 @@ using System.Threading.Tasks;
 
 namespace AspNetSandBox.Tests
 {
+    /// <summary>LoadJson Class.</summary>
     internal static class LoadJson
     {
+        /// <summary>Loads the json from resource.</summary>
+        /// <param name="filename">The filename.</param>
+        /// <returns>
+        ///   <br />
+        /// </returns>
         public static string LoadJsonFromResource(string filename)
         {
             var assembly = Assembly.GetCallingAssembly();

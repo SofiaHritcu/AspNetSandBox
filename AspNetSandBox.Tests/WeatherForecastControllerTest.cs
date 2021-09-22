@@ -1,14 +1,16 @@
-using AspNetSandBox.Controllers;
-using AspNetSandBox.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using AspNetSandBox.Controllers;
+using AspNetSandBox.Models;
 using Xunit;
 
 namespace AspNetSandBox.Tests
 {
+    /// <summary>WeatherForecastControllerTest Class.</summary>
     public class WeatherForecastControllerTest
     {
+        /// <summary>Shoulds the convert response to weather forecast.</summary>
         [Fact]
         public void ShouldConvertResponseToWeatherForecast()
         {
@@ -26,6 +28,7 @@ namespace AspNetSandBox.Tests
             Assert.Equal(new DateTime(2021, 9, 3), weatherForecastForTomorrow.Date);
         }
 
+        /// <summary>Shoulds the convert response to weather forecast after tomorrow.</summary>
         [Fact]
         public void ShouldConvertResponseToWeatherForecastAfterTomorrow()
         {

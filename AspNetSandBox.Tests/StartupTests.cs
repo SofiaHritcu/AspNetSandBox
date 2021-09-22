@@ -7,8 +7,10 @@ using Xunit;
 
 namespace AspNetSandBox.Tests
 {
+    /// <summary>StartupTests Class.</summary>
     public class StartupTests
     {
+        /// <summary>Checks the conversion to ef connection string.</summary>
         [Fact]
         public void CheckConversionToEFConnectionString()
         {

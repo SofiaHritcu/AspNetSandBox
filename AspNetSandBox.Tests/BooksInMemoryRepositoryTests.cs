@@ -1,12 +1,14 @@
-﻿using AspNetSandBox.Models;
+﻿using System;
+using AspNetSandBox.Models;
 using AspNetSandBox.Services;
-using System;
 using Xunit;
 
 namespace AspNetSandBox.Tests
 {
+    /// <summary>BooksInMemoDryRepositoryTests Class.</summary>
     public class BooksInMemoryRepositoryTests
     {
+        /// <summary>Shoulds the get book valid identifier.</summary>
         [Fact]
         public void ShouldGetBookValidId()
         {
@@ -25,6 +27,7 @@ namespace AspNetSandBox.Tests
             Assert.Equal("War And Peace", booksService.Get(3).Title);
         }
 
+        /// <summary>Shoulds the not get book invalid identifier.</summary>
         [Fact]
         public void ShouldNotGetBookInvalidId()
         {
@@ -43,6 +46,7 @@ namespace AspNetSandBox.Tests
             }
         }
 
+        /// <summary>Shoulds the add valid book.</summary>
         [Fact]
         public void ShouldAddValidBook()
         {
@@ -63,6 +67,7 @@ namespace AspNetSandBox.Tests
                                 booksService.Get(3).Language == "english");
         }
 
+        /// <summary>Shoulds the not add invalid book.</summary>
         [Fact]
         public void ShouldNotAddInvalidBook()
         {
@@ -81,6 +86,7 @@ namespace AspNetSandBox.Tests
             }
         }
 
+        /// <summary>Shoulds the not add null book.</summary>
         [Fact]
         public void ShouldNotAddNullBook()
         {
@@ -99,6 +105,7 @@ namespace AspNetSandBox.Tests
             }
         }
 
+        /// <summary>Shoulds the add books with unique ids.</summary>
         [Fact]
         public void ShouldAddBooksWithUniqueIds()
         {
@@ -126,6 +133,7 @@ namespace AspNetSandBox.Tests
             Assert.Equal("Murder on the Orient Express", booksService.Get(3).Title);
         }
 
+        /// <summary>Shoulds the update valid book.</summary>
         [Fact]
         public void ShouldUpdateValidBook()
         {
@@ -153,6 +161,7 @@ namespace AspNetSandBox.Tests
                         booksService.Get(3).Language == "english");
         }
 
+        /// <summary>Shoulds the not update invalid book.</summary>
         [Fact]
         public void ShouldNotUpdateInvalidBook()
         {
@@ -175,6 +184,7 @@ namespace AspNetSandBox.Tests
             }
         }
 
+        /// <summary>Shoulds the not update book with invalid value.</summary>
         [Fact]
         public void ShouldNotUpdateBookWithInvalidValue()
         {
@@ -192,6 +202,7 @@ namespace AspNetSandBox.Tests
             }
         }
 
+        /// <summary>Shoulds the delete valid book.</summary>
         [Fact]
         public void ShouldDeleteValidBook()
         {
@@ -218,6 +229,7 @@ namespace AspNetSandBox.Tests
             }
         }
 
+        /// <summary>Shoulds the not delete invalid book.</summary>
         [Fact]
         public void ShouldNotDeleteInvalidBook()
         {

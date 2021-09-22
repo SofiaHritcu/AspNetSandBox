@@ -1,17 +1,19 @@
-﻿using AspNetSandBox.Controllers;
-using AspNetSandBox.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AspNetSandBox.Controllers;
+using AspNetSandBox.Models;
 using Xunit;
 
 namespace AspNetSandBox.Tests
 {
+    /// <summary>CityCoordinatesControllerTest Class.</summary>
     public class CityCoordinatesControllerTest
     {
+        /// <summary>Shoulds the convert response to bucharest coordinates.</summary>
         [Fact]
         public void ShouldConvertResponseToBucharestCoordinates()
         {
@@ -27,6 +29,7 @@ namespace AspNetSandBox.Tests
             Assert.Equal(44.4323, cityCoordinates.Lat);
         }
 
+        /// <summary>Shoulds the convert response to athene coordinates.</summary>
         [Fact]
         public void ShouldConvertResponseToAtheneCoordinates()
         {
@@ -42,6 +45,7 @@ namespace AspNetSandBox.Tests
             Assert.Equal(37.9795, cityCoordinates.Lat);
         }
 
+        /// <summary>Shoulds the convert response to chicago coordinates.</summary>
         [Fact]
         public void ShouldConvertResponseToChicagoCoordinates()
         {

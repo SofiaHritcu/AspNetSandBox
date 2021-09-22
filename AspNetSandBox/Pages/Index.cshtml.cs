@@ -8,15 +8,17 @@ using Microsoft.Extensions.Logging;
 
 namespace AspNetSandBox.Pages
 {
+    /// <summary>IndexModel.</summary>
+#pragma warning disable SA1649 // File name should match first type name
     public class IndexModel : PageModel
+#pragma warning restore SA1649 // File name should match first type name
     {
-        private readonly ILogger<IndexModel> _logger;
-
-        public IndexModel(ILogger<IndexModel> logger)
+        /// <summary>Initializes a new instance of the <see cref="IndexModel" /> class.</summary>
+        public IndexModel()
         {
-            _logger = logger;
         }
 
+        /// <summary>Called when [get].</summary>
         public void OnGet()
         {
         }

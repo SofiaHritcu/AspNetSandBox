@@ -1,7 +1,7 @@
-﻿using AspNetSandBox.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using AspNetSandBox.Models;
 
 namespace AspNetSandBox.Services
 {

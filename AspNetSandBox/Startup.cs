@@ -17,15 +17,25 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Infrastructure;
 
 namespace AspNetSandBox
 {
+    /// <summary>Startup.</summary>
     public class Startup
     {
+        /// <summary>Initializes a new instance of the <see cref="Startup" /> class.</summary>
+        /// <param name="configuration">The configuration.</param>
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
 
+        /// <summary>Gets the configuration.</summary>
+        /// <value>The configuration.</value>
         public IConfiguration Configuration { get; }
 
+        /// <summary>Converts the connection string.</summary>
+        /// <param name="connectionString">The connection string.</param>
+        /// <returns>
+        ///   <br />
+        /// </returns>
         public static string ConvertConnectionString(string connectionString)
         {
             Uri databaseUri = new Uri(connectionString);
@@ -39,6 +49,9 @@ namespace AspNetSandBox
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.
+
+        /// <summary>Configures the services.</summary>
+        /// <param name="services">The services.</param>
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(options =>
@@ -62,6 +75,10 @@ namespace AspNetSandBox
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+
+        /// <summary>Configures the specified application.</summary>
+        /// <param name="app">The application.</param>
+        /// <param name="env">The env.</param>
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
