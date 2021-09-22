@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using AspNetSandBox.Data;
 using AspNetSandBox.DTOs;
+using AspNetSandBox.Hubs;
 using AspNetSandBox.Models;
 using AspNetSandBox.Services;
 using AutoMapper;
