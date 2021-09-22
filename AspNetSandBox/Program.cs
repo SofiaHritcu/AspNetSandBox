@@ -1,12 +1,16 @@
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
+using AspNetSandBox.Data;
 using CommandLine;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Protocols;
 
 namespace AspNetSandBox
 {
@@ -20,8 +24,18 @@ namespace AspNetSandBox
         /// <summary>Gets or sets a value indicating whether this <see cref="Options" /> is verbose.</summary>
         /// <value>
         ///   <c>true</c> if verbose; otherwise, <c>false</c>.</value>
-        [Option('v', "verbose", Required = false, HelpText = "Set output to verbose messages.")]
+        [Option('v', "verbose", Required = false, HelpText = "Show details .")]
         public bool Verbose { get; set; }
+
+        /// <summary>Gets or sets a value indicating whether gets or sets the connection string.</summary>
+        /// <value>The connection string.</value>
+        [Option('c', "connection", Required = false, HelpText = "Choose connection string for DB --c [connetionStringValue].")]
+        public bool ConnectionString { get; set; }
+
+        /// <summary>Gets or sets the connection string value.</summary>
+        /// <value>The connection string value.</value>
+        [Value(0, MetaName = "connectionValue", Required = false, HelpText = "Place value for connection string DB .")]
+        public string ConnectionStringValue { get; set; }
     }
 
     /// <summary>Program Class.</summary>
@@ -45,7 +59,13 @@ namespace AspNetSandBox
                            Console.WriteLine($"Current Arguments: -v {o.Verbose}");
                            Console.WriteLine("Quick Start Example!");
                        }
-                   });
+
+                       if (o.ConnectionString && o.ConnectionStringValue == null)
+                       {
+                           Console.WriteLine("Missing connextion string value!");
+                       }
+                   })
+                   ;
 
             if (args.Length > 0)
             {
@@ -65,11 +85,18 @@ namespace AspNetSandBox
         /// <returns>
         ///   <br />
         /// </returns>
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
+        public static IHostBuilder CreateHostBuilder(string[] args)
+        {
+            var configuration = new ConfigurationBuilder()
+                .AddCommandLine(args)
+                .Build();
+
+            return Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
+                    webBuilder.UseConfiguration(configuration);
                 });
+        }
     }
 }

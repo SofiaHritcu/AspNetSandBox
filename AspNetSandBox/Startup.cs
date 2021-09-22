@@ -126,6 +126,13 @@ namespace AspNetSandBox
 
         private string GetConnectionString()
         {
+            var connectionStringCmdLine = Configuration.GetValue<string>("c");
+            if (connectionStringCmdLine != null)
+            {
+                Console.WriteLine(connectionStringCmdLine);
+                return connectionStringCmdLine;
+            }
+
             var connectionString = Environment.GetEnvironmentVariable("DATABASE_URL");
             if (connectionString != null)
             {
