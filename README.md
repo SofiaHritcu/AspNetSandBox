@@ -1,6 +1,16 @@
-﻿## How to run in Docker from the commandline
+﻿# Sofia's sandbox project for back-end project
 
-Build in container
+Name | Value
+--- | ---
+Language | C#
+Database | Postgres
+Deployed | https://webapp-sandbox-sofia.herokuapp.com
+
+## How to run in Docker from the commandline
+
+Execute the commands below in [AspNetSandBox](AspNetSandBox) directory
+
+### Build in container
 ```
 docker build -t web_sofia .
 ```
