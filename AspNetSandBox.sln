@@ -10,7 +10,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{505D688A-D548-46C2-BEA7-35002C00F8E2}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
-		AspNetSandBox\wwwroot\images\app-screenshot.png = AspNetSandBox\wwwroot\images\app-screenshot.png
 		.github\workflows\dotnet.yml = .github\workflows\dotnet.yml
 		README.md = README.md
 	EndProjectSection
