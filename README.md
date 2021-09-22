@@ -6,6 +6,9 @@ Language | C#
 Database | Postgres
 Deployed | https://webapp-sandbox-sofia.herokuapp.com
 
+### The application running
+![Alt text](/./img.jpg?raw=true "Application running")
+
 ## How to run in Docker from the commandline
 
 Execute the commands below in [AspNetSandBox](AspNetSandBox) directory
