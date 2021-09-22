@@ -52,6 +52,17 @@
         <member name="M:AspNetSandBox.Tests.CityCoordinatesControllerTest.ShouldConvertResponseToChicagoCoordinates">
             <summary>Shoulds the convert response to chicago coordinates.</summary>
         </member>
+        <member name="T:AspNetSandBox.Tests.FileOperationWithBooksTests">
+            <summary>FileOperationWithBooksTests Class.</summary>
+        </member>
+        <member name="M:AspNetSandBox.Tests.FileOperationWithBooksTests.ShouldEnumerateFiles">
+            <summary>Shoulds the create file.</summary>
+        </member>
+        <member name="M:AspNetSandBox.Tests.FileOperationWithBooksTests.ShouldCreateFile">
+            <summary>
+            Shoulds the create file.
+            </summary>
+        </member>
         <member name="T:AspNetSandBox.Tests.LoadJson">
             <summary>LoadJson Class.</summary>
         </member>
