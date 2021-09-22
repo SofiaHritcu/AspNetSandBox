@@ -7,7 +7,7 @@ Database | Postgres
 Deployed | https://webapp-sandbox-sofia.herokuapp.com
 
 ### The application running
-![Alt text](/./app-screenshot.png?raw=true "Application running")
+![Alt text](../../app-screenshot.png?raw=true "Application running")
 
 ## How to run in Docker from the commandline
 
