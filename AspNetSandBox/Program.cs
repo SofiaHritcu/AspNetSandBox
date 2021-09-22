@@ -21,6 +21,7 @@ namespace AspNetSandBox
     {
         /// <summary>Defines the entry point of the application.</summary>
         /// <param name="args">The arguments.</param>
+        /// <returns>Return Code int.</returns>
         public static int Main(string[] args)
         {
             Parser.Default.ParseArguments<Options>(args)
