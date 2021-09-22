@@ -63,6 +63,11 @@
             Shoulds the create file.
             </summary>
         </member>
+        <member name="M:AspNetSandBox.Tests.FileOperationWithBooksTests.ShouldReadFile">
+            <summary>
+            Shoulds the read file.
+            </summary>
+        </member>
         <member name="T:AspNetSandBox.Tests.LoadJson">
             <summary>LoadJson Class.</summary>
         </member>
