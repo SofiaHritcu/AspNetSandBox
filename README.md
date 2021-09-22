@@ -1,4 +1,4 @@
-﻿# Sofia's sandbox project for back-end project
+﻿# Sofia's sandbox project for back-end workshop
 
 Name | Value
 --- | ---
