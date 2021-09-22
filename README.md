@@ -8,7 +8,6 @@ Deployed | https://webapp-sandbox-sofia.herokuapp.com
 
 ### The application running
 ![ScreenShot](/Screenshots/app-screenshot.png)
-![Alt text](../../../AspNetSandBox/app-screenshot.png?raw=true "Application running")
 
 ## How to run in Docker from the commandline
 
