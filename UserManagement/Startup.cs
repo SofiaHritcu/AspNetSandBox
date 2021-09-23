@@ -7,16 +7,14 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using UserManagement.Data;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Infrastructure;
 
 namespace UserManagement
 {
-    public class Startup
+    public partial class Startup
     {
         public Startup(IConfiguration configuration)
         {
@@ -34,6 +32,7 @@ namespace UserManagement
             services.AddDatabaseDeveloperPageExceptionFilter();
 
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
         }
@@ -59,6 +58,8 @@ namespace UserManagement
 
             app.UseAuthentication();
             app.UseAuthorization();
+
+            app.CreateBasicRolesAsync();
 
             app.UseEndpoints(endpoints =>
             {
