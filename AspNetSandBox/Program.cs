@@ -41,11 +41,22 @@ namespace AspNetSandBox
     /// <summary>Program Class.</summary>
     public class Program
     {
+        /// <summary>Program.ExitCodes Enumeration.</summary>
+        public enum ExitCodes
+        {
+            /// <summary>The no error</summary>
+            NoError = 0,
+
+            /// <summary>The invalid arguments</summary>
+            InvalidArguments = 1,
+        }
+
         /// <summary>Defines the entry point of the application.</summary>
         /// <param name="args">The arguments.</param>
         /// <returns>Return Code int.</returns>
         public static int Main(string[] args)
         {
+            bool breakExecution = false;
             Parser.Default.ParseArguments<Options>(args)
                    .WithParsed<Options>(o =>
                    {
@@ -62,10 +73,15 @@ namespace AspNetSandBox
 
                        if (o.ConnectionString && o.ConnectionStringValue == null)
                        {
-                           Console.WriteLine("Missing connextion string value!");
+                           Console.WriteLine("Missing connexction string value!");
+                           breakExecution = true;
                        }
                    })
                    ;
+            if (breakExecution)
+            {
+                return (int)ExitCodes.InvalidArguments;
+            }
 
             if (args.Length > 0)
             {
@@ -77,7 +93,7 @@ namespace AspNetSandBox
             }
 
             CreateHostBuilder(args).Build().Run();
-            return 0;
+            return (int)ExitCodes.NoError;
         }
 
         /// <summary>Creates the host builder.</summary>

@@ -59,6 +59,9 @@ namespace AspNetSandBox
                 options.UseNpgsql(GetConnectionString()));
 
             services.AddDatabaseDeveloperPageExceptionFilter();
+
+            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+               .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddRazorPages();
             services.AddControllers();
             services.AddSwaggerGen(c =>
